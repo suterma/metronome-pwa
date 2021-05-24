@@ -1,0 +1,58 @@
+@charset "utf-8";
+
+//TODO cleanup
+// Import a Google Font
+//@import url('https://fonts.googleapis.com/css?family=Nunito:400,700');
+
+// Use a black theme (roughly inverted from original)
+$black-bis: hsl(0, 0%, 98%);
+$black-ter: hsl(0, 0%, 96%);
+$grey-darker: hsl(0, 0%, 86%);
+$grey-dark: hsl(0, 0%, 71%);
+$grey-light: hsl(0, 0%, 29%);
+$grey-lighter: hsl(0, 0%, 21%);
+$white-ter: hsl(0, 0%, 14%);
+$white-bis: hsl(0, 0%, 7%);
+
+$white: hsl(0, 0%, 4%);
+$black: hsl(0, 0%, 100%);
+$light: hsl(0, 0%, 21%);
+$dark: hsl(0, 0%, 96%);
+
+// Update Bulma's global variables
+$family-sans-serif: 'Helvetica', 'Arial', sans-serif;
+$family-primary: $family-sans-serif;
+$primary: hsl(51, 100%, 53%); //light yellow
+$info: hsl(7, 67%, 41%); //darker red
+
+// $size-1: 2cm;
+// $size-2: $size-1 * 0.71;
+// $size-3: $size-2 * 0.71;
+// $size-4: $size-3 * 0.71;
+// $size-5: $size-4 * 0.71;
+// $size-6: $size-5 * 0.71;
+// $size-7: $size-6 * 0.71;
+
+// $body-font-size: $size-4;
+
+// Don't use special layout on very large screens
+$widescreen-enabled: false;
+$fullhd-enabled: false;
+
+// Update some of Bulma's component variables
+$control-border-width: 2px;
+//$input-border-color: transparent;
+$input-shadow: none;
+
+@import '../node_modules/bulma/bulma.sass';
+
+// //TODO Import only what you need from Bulma
+// @import '../node_modules/bulma/sass/utilities/_all.sass';
+// @import '../node_modules/bulma/sass/base/_all.sass';
+// @import '../node_modules/bulma/sass/elements/button.sass';
+// @import '../node_modules/bulma/sass/elements/container.sass';
+// @import '../node_modules/bulma/sass/elements/title.sass';
+// @import '../node_modules/bulma/sass/form/_all.sass';
+// @import '../node_modules/bulma/sass/components/navbar.sass';
+// @import '../node_modules/bulma/sass/layout/hero.sass';
+// @import '../node_modules/bulma/sass/layout/section.sass';

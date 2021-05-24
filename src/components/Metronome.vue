@@ -1,59 +1,220 @@
 <template>
     <h1>Metronome</h1>
 
-    <div>
-        <label for="bpm">BPM</label>
-        <button
-            class="button-finger"
-            @mousedown="changeBpm(-1)"
-            @keydown="changeBpm(-1)"
-        >
-            -
-        </button>
-        <input
-            type="range"
-            id="bpm"
-            name="bpm"
-            :min="bpmMin"
-            :max="bpmMax"
-            step="1"
-            v-model="beatsPerMinute"
-            @change="updateBpm"
-        />
-        <span>{{ beatsPerMinute }}</span>
-        <button
-            class="button-finger"
-            @mousedown="changeBpm(1)"
-            @keydown="changeBpm(1)"
-        >
-            +
-        </button>
+    <div class="field is-horizontal">
+        <div class="field-label is-small">
+            <label for="volume" class="label">Volume</label>
+        </div>
+        <div class="field-body">
+            <div class="field">
+                <div class="control">
+                    <input
+                        class="input is-large"
+                        type="range"
+                        id="volume"
+                        min="0"
+                        max="2"
+                        v-model="volume"
+                        step="0.01"
+                    />
+                </div>
+            </div>
+        </div>
     </div>
-    <div>
-        <button class="button-finger" @mousedown="run" @keydown="run">
-            Run
-        </button>
+
+    <!-- <div class="field is-horizontal">
+        <div class="field-label is-small">
+            <label for="bpm" class="label">BPM</label>
+        </div>
+        <div class="field-body">
+            <div class="field">
+                <div class="control">
+                    <input
+                        class="input is-large"
+                        type="number"
+                        id="bpm"
+                        v-model="beatsPerMinute"
+                        step="1"
+                    />
+                </div>
+            </div>
+        </div>
+    </div> -->
+
+    <div class="field is-horizontal">
+        <div class="field-label is-small">
+            <label for="bpm" class="label">BPM</label>
+        </div>
+        <div class="field-body">
+            <div class="field is-grouped">
+                <p class="control">
+                    <button
+                        class="button is-info is-large is-outlined is-expanded"
+                        @mousedown="changeBpm(-1)"
+                        @keydown="changeBpm(-1)"
+                    >
+                        -
+                    </button>
+                </p>
+                <p class="control">
+                    <button
+                        class="button is-info is-large is-outlined is-expanded"
+                        @mousedown="changeBpm(1)"
+                        @keydown="changeBpm(1)"
+                    >
+                        +
+                    </button>
+                </p>
+                <p class="control">
+                    <input
+                        class="input is-large is-expanded"
+                        type="number"
+                        id="bpm"
+                        v-model="beatsPerMinute"
+                        step="1"
+                    />
+                </p>
+            </div>
+        </div>
     </div>
-    <div>
-        {{ sequnceTapCount }}{{ click }} BPM:{{ beatsPerMinute }} Running:
-        {{ isRunning }}
-        <!-- The audio element is not shown. All relevant controls are provided as separate elements -->
-        <audio src="../../audio/drumsticks.wav" id="soundelement"></audio>
+
+    <!-- <div class="field has-addons">
+        <label for="bpm" class="label">BPM</label>
+        <div class="control">
+            <input
+                class="input is-large"
+                type="number"
+                id="bpm"
+                v-model="beatsPerMinute"
+                step="1"
+            />
+        </div>
+        <p class="help is-success">This username is available</p>
+    </div> -->
+
+    <!-- <div class="field is-horizontal has-addons">
+        <div class="field-label is-small">
+            <label for="bpm" class="label">BPM</label>
+        </div>
+        <div class="field-body">
+            <div class="field">
+                <div class="control">
+                    <button
+                        class="button is-info is-large is-outlined"
+                        @mousedown="changeBpm(-1)"
+                        @keydown="changeBpm(-1)"
+                    >
+                        -
+                    </button>
+                </div>
+                <div class="control is-expanded">
+                    <input
+                        class="input is-large"
+                        type="number"
+                        id="bpm"
+                        v-model="beatsPerMinute"
+                        step="1"
+                    />
+                </div>
+                <div class="control">
+                    <button
+                        class="button is-info is-large is-outlined"
+                        @mousedown="changeBpm(1)"
+                        @keydown="changeBpm(1)"
+                    >
+                        +
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div> -->
+
+    <!-- <div class="columns">
+        <div class="column is-one-fifth">
+            <label for="volume" class="is-hidden-mobile">Volume</label>
+        </div>
+
+        <div class="column">
+            <input
+                class="is-info is-large is-outlined block"
+                type="range"
+                id="volume"
+                min="0"
+                max="2"
+                v-model="volume"
+                step="0.01"
+            />
+        </div>
+        <div class="column is-one-fifth">
+            <span class="is-hidden-mobile">{{ volume }}</span>
+        </div>
     </div>
-    <div>
-        <button class="button-finger" @mousedown="tap" @keydown="tap">
-            Tap/Stop
-        </button>
+
+    <div class="columns">
+        <div class="column is-one-fifth">
+            <label for="bpm" class="is-hidden-mobile">BPM</label>
+        </div>
+        <div class="column">
+            <span class="block">
+                <button
+                    class="button is-info is-large is-outlined"
+                    @mousedown="changeBpm(-1)"
+                    @keydown="changeBpm(-1)"
+                >
+                    -
+                </button>
+                <input
+                    class="is-info is-large is-outlined"
+                    type="number"
+                    id="bpm"
+                    name="bpm"
+                    :min="bpmMin"
+                    :max="bpmMax"
+                    step="1"
+                    v-model="beatsPerMinute"
+                    @change="updateBpm"
+                />
+                <button
+                    class="button is-info is-large is-outlined"
+                    @mousedown="changeBpm(1)"
+                    @keydown="changeBpm(1)"
+                >
+                    +
+                </button>
+            </span>
+        </div>
+        <div class="column is-one-fifth">
+            <span>{{ beatsPerMinute.toLocaleString() }}</span>
+        </div>
+    </div> -->
+    <div class="columns">
+        <div class="column is-full">
+            {{ sequnceTapCount }}{{ click }} BPM:{{ beatsPerMinute }} Running:
+            {{ isRunning }}
+            <!-- The audio element is not shown. All relevant controls are provided as separate elements -->
+            <audio src="../../audio/drumsticks.wav" id="soundelement"></audio>
+        </div>
     </div>
-    <div>
-        <input
-            type="range"
-            id="volume"
-            min="0"
-            max="2"
-            v-model="volume"
-            step="0.01"
-        />Volume: {{ volume }}
+    <div class="columns">
+        <div class="column is-half">
+            <button
+                class="button is-info is-large is-outlined block"
+                @mousedown="run"
+                @keydown="run"
+            >
+                Run
+            </button>
+        </div>
+
+        <div class="column is-half">
+            <button
+                class="button is-primary is-large is-outlined block"
+                @mousedown="tap"
+                @keydown="tap"
+            >
+                Tap/Stop
+            </button>
+        </div>
     </div>
 
     <h1>Credits</h1>
@@ -127,7 +288,10 @@ export default defineComponent({
          */
         updateBpm(event: Event): void {
             console.debug('Metronome::updateBpm', this.beatsPerMinute);
-            this.run();
+            if (this.isRunning) {
+                //Start again with updated BPM
+                this.run();
+            }
         },
 
         /** Increases the BPM rate by one (by button, not tap) with re-running the interval
@@ -257,9 +421,37 @@ export default defineComponent({
 </script>
 
 <style scoped>
+/** For this app, use center-aligned controls */
+.column {
+}
+.control-group {
+    /* width: 100%; */
+}
 /** A button, sized for fingered input */
-.button-finger {
-    min-width: 2.5cm;
-    min-height: 2.5cm;
+input.is-large {
+    /* min-width: 2.5cm;
+    min-height: 2.5cm; */
+}
+
+/** Metronome buttons have a distinct outlined style */
+.button.is-outlined {
+    /* border-width: 3mm;
+    background-color: transparent; */
+}
+
+/** Only very slightly indicate hover */
+.button.is-outlined:hover {
+    /* background-color: #803535dd; */
+}
+
+/** Fill the available space */
+.block {
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+
+input#bpm {
+    max-width: 6em;
 }
 </style>

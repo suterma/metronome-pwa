@@ -1,6 +1,10 @@
 <template>
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <Metronome :bpm-min="35" :bpm-max="200" />
+    <section class="section">
+        <div class="container is-unselectable is-shadowless">
+            <img alt="Vue logo" src="./assets/logo.png" />
+            <Metronome :bpm-min="35" :bpm-max="200" />
+        </div>
+    </section>
 </template>
 
 <script lang="ts">
