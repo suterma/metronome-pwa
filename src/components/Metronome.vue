@@ -9,7 +9,7 @@
             <div class="field">
                 <div class="control">
                     <Fader
-                        class="input is-large"
+                        class="input is-link is-large is-info"
                         type="range"
                         id="volume"
                         :min="0"
@@ -48,7 +48,7 @@
                 </p>
                 <p class="control">
                     <input
-                        class="input is-large is-expanded"
+                        class="input is-info is-large is-expanded"
                         type="number"
                         id="bpm"
                         v-model="beatsPerMinute"
@@ -67,12 +67,12 @@
             <div class="field">
                 <div class="control">
                     <Fader
-                        class="input is-large"
+                        class="input is-info is-large"
                         type="range"
                         id="bpmFader"
                         :min="35"
                         :max="180"
-                        :step="0.01"
+                        :step="1"
                         v-model.number="beatsPerMinute"
                     />
                 </div>

@@ -7196,84 +7196,303 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
   background-color: #121212;
   padding: 3rem 1.5rem 6rem; }
 
-/*----------------------------------------------------------------*/
-/* Fader styles*/
+/** These are specific bulma styles for the fader component
+* @remarks These styles are currently only written to work for is-large controls.*/
+/* Faders do not the typical colored control border (They use a colored track and thumb instead)*/
+.is-info.input[type='range'] {
+  border-color: #242424; }
+
+/* Customized range input styles*/
 input[type='range'] {
   -webkit-appearance: none;
   margin: 18px 0;
-  width: 100%; }
+  width: 100%;
+  background-color: #0a0a0a;
+  /*equals to the page background*/ }
 
 input[type='range']:focus {
   outline: none; }
 
+/*-- BELOW: variant for webkit (Google Chrome et al) ---*/
+/* The track */
 input[type='range']::-webkit-slider-runnable-track {
   width: 100%;
   height: 8.4px;
   cursor: pointer;
-  background: #3071a9;
+  background: #242424;
   border-radius: 4px;
-  border: 0.2px solid #010101; }
+  border: 2px solid #b5b5b5; }
 
+/* color variants to input[type='range']::-webkit-slider-runnable-track */
+.is-info input[type='range']::-webkit-slider-runnable-track {
+  border: 2px solid #af3323; }
+
+.is-success input[type='range']::-webkit-slider-runnable-track {
+  border: 2px solid #48c774; }
+
+.is-warning input[type='range']::-webkit-slider-runnable-track {
+  border: 2px solid #ffdd57; }
+
+.is-danger input[type='range']::-webkit-slider-runnable-track {
+  border: 2px solid #f14668; }
+
+.is-primary input[type='range']::-webkit-slider-runnable-track {
+  border: 2px solid #ffdb0f; }
+
+.is-link input[type='range']::-webkit-slider-runnable-track {
+  border: 2px solid #3273dc; }
+
+/* The Thumb*/
 input[type='range']::-webkit-slider-thumb {
-  border: 1px solid #000000;
-  height: 36px;
-  width: 16px;
+  border: 2px solid #b5b5b5;
+  height: calc(5em - 6px);
+  width: calc(5em - 6px);
   border-radius: 4px;
-  background: #ffffff;
+  background: #0a0a0a;
+  /*equals to the page background*/
   cursor: pointer;
   -webkit-appearance: none;
-  margin-top: -14px; }
+  margin-top: -28px; }
 
-input[type='range']:focus::-webkit-slider-runnable-track {
-  background: #367ebd; }
+/* color variants to input[type='range']::-webkit-slider-thumb */
+.is-info input[type='range']::-webkit-slider-thumb {
+  border: 2px solid #af3323; }
 
+.is-success input[type='range']::-webkit-slider-thumb {
+  border: 2px solid #48c774; }
+
+.is-warning input[type='range']::-webkit-slider-thumb {
+  border: 2px solid #ffdd57; }
+
+.is-danger input[type='range']::-webkit-slider-thumb {
+  border: 2px solid #f14668; }
+
+.is-primary input[type='range']::-webkit-slider-thumb {
+  border: 2px solid #ffdb0f; }
+
+.is-link input[type='range']::-webkit-slider-thumb {
+  border: 2px solid #3273dc; }
+
+/* The hovering state */
+input[type='range']:hover::-webkit-slider-thumb {
+  background: #b5b5b5; }
+
+/* color variants to the hovering state */
+.is-info input[type='range']:hover::-webkit-slider-thumb {
+  background: #af3323; }
+
+.is-success input[type='range']:hover::-webkit-slider-thumb {
+  background: #48c774; }
+
+.is-warning input[type='range']:hover::-webkit-slider-thumb {
+  background: #ffdd57; }
+
+.is-danger input[type='range']:hover::-webkit-slider-thumb {
+  background: #f14668; }
+
+.is-primary input[type='range']:hover::-webkit-slider-thumb {
+  background: #ffdb0f; }
+
+.is-link input[type='range']:hover::-webkit-slider-thumb {
+  background: #3273dc; }
+
+/* The focused, not active state */
+.control input[type='range']:focus:not(:active)::-webkit-slider-runnable-track {
+  box-shadow: 0 0 0 0.125em rgba(50, 115, 220, 0.25);
+  border-color: #3273dc; }
+
+input[type='range']:focus:not(:active)::-webkit-slider-thumb {
+  box-shadow: 0 0 0 0.125em rgba(50, 115, 220, 0.25);
+  border-color: #3273dc; }
+
+/* color variants to the focused, not active state */
+.control .is-info input[type='range']:focus:not(:active)::-webkit-slider-runnable-track {
+  box-shadow: 0 0 0 0.125em rgba(175, 51, 35, 0.25);
+  border-color: #af3323; }
+
+.is-info input[type='range']:focus:not(:active)::-webkit-slider-thumb {
+  box-shadow: 0 0 0 0.125em rgba(175, 51, 35, 0.25);
+  border-color: #af3323; }
+
+.control .is-success input[type='range']:focus:not(:active)::-webkit-slider-runnable-track {
+  box-shadow: 0 0 0 0.125em rgba(72, 199, 116, 0.25);
+  border-color: #48c774; }
+
+.is-success input[type='range']:focus:not(:active)::-webkit-slider-thumb {
+  box-shadow: 0 0 0 0.125em rgba(72, 199, 116, 0.25);
+  border-color: #48c774; }
+
+.control .is-warning input[type='range']:focus:not(:active)::-webkit-slider-runnable-track {
+  box-shadow: 0 0 0 0.125em rgba(255, 221, 87, 0.25);
+  border-color: #ffdd57; }
+
+.is-warning input[type='range']:focus:not(:active)::-webkit-slider-thumb {
+  box-shadow: 0 0 0 0.125em rgba(255, 221, 87, 0.25);
+  border-color: #ffdd57; }
+
+.control .is-danger input[type='range']:focus:not(:active)::-webkit-slider-runnable-track {
+  box-shadow: 0 0 0 0.125em rgba(241, 70, 104, 0.25);
+  border-color: #f14668; }
+
+.is-danger input[type='range']:focus:not(:active)::-webkit-slider-thumb {
+  box-shadow: 0 0 0 0.125em rgba(241, 70, 104, 0.25);
+  border-color: #f14668; }
+
+.control .is-primary input[type='range']:focus:not(:active)::-webkit-slider-runnable-track {
+  box-shadow: 0 0 0 0.125em rgba(255, 219, 15, 0.25);
+  border-color: #ffdb0f; }
+
+.is-primary input[type='range']:focus:not(:active)::-webkit-slider-thumb {
+  box-shadow: 0 0 0 0.125em rgba(255, 219, 15, 0.25);
+  border-color: #ffdb0f; }
+
+.control .is-link input[type='range']:focus:not(:active)::-webkit-slider-runnable-track {
+  box-shadow: 0 0 0 0.125em rgba(50, 115, 220, 0.25);
+  border-color: #3273dc; }
+
+.is-link input[type='range']:focus:not(:active)::-webkit-slider-thumb {
+  box-shadow: 0 0 0 0.125em rgba(50, 115, 220, 0.25);
+  border-color: #3273dc; }
+
+/*-- BELOW: variant for mozilla (Firefox) ---*/
+/* The track */
 input[type='range']::-moz-range-track {
   width: 100%;
   height: 8.4px;
   cursor: pointer;
-  background: #3071a9;
+  background: #242424;
   border-radius: 4px;
-  border: 0.2px solid #010101; }
+  border: 2px solid #b5b5b5; }
 
+/* color variants to input[type='range']::-moz-range-track */
+.is-info input[type='range']::-moz-range-track {
+  border: 2px solid #af3323; }
+
+.is-success input[type='range']::-moz-range-track {
+  border: 2px solid #48c774; }
+
+.is-warning input[type='range']::-moz-range-track {
+  border: 2px solid #ffdd57; }
+
+.is-danger input[type='range']::-moz-range-track {
+  border: 2px solid #f14668; }
+
+.is-primary input[type='range']::-moz-range-track {
+  border: 2px solid #ffdb0f; }
+
+.is-link input[type='range']::-moz-range-track {
+  border: 2px solid #3273dc; }
+
+/* The Thumb*/
 input[type='range']::-moz-range-thumb {
-  border: 1px solid #000000;
-  height: 36px;
-  width: 16px;
+  border: 2px solid #b5b5b5;
+  height: calc(5em - 6px);
+  width: calc(5em - 6px);
   border-radius: 4px;
-  background: #ffffff;
-  cursor: pointer; }
-
-input[type='range']::-ms-track {
-  width: 100%;
-  height: 8.4px;
+  background: #0a0a0a;
+  /*equals to the page background*/
   cursor: pointer;
-  background: transparent;
-  border-color: transparent;
-  border-width: 16px 0;
-  color: transparent; }
+  -webkit-appearance: none;
+  margin-top: -28px; }
 
-input[type='range']::-ms-fill-lower {
-  background: #2a6495;
-  border: 0.2px solid #010101;
-  border-radius: 4px; }
+/* color variants to input[type='range']::-moz-range-thumb */
+.is-info input[type='range']::-moz-range-thumb {
+  border: 2px solid #af3323; }
 
-input[type='range']::-ms-fill-upper {
-  background: #3071a9;
-  border: 0.2px solid #010101;
-  border-radius: 4px; }
+.is-success input[type='range']::-moz-range-thumb {
+  border: 2px solid #48c774; }
 
-input[type='range']::-ms-thumb {
-  border: 1px solid #000000;
-  height: 36px;
-  width: 16px;
-  border-radius: 4px;
-  background: #ffffff;
-  cursor: pointer; }
+.is-warning input[type='range']::-moz-range-thumb {
+  border: 2px solid #ffdd57; }
 
-input[type='range']:focus::-ms-fill-lower {
-  background: #3071a9; }
+.is-danger input[type='range']::-moz-range-thumb {
+  border: 2px solid #f14668; }
 
-input[type='range']:focus::-ms-fill-upper {
-  background: #367ebd; }
+.is-primary input[type='range']::-moz-range-thumb {
+  border: 2px solid #ffdb0f; }
 
-/*----------------------------------------------------------------*/
+.is-link input[type='range']::-moz-range-thumb {
+  border: 2px solid #3273dc; }
+
+/* The hovering state */
+input[type='range']:hover::-moz-range-thumb {
+  background: #b5b5b5; }
+
+/* color variants to the hovering state */
+.is-info input[type='range']:hover::-moz-range-thumb {
+  background: #af3323; }
+
+.is-success input[type='range']:hover::-moz-range-thumb {
+  background: #48c774; }
+
+.is-warning input[type='range']:hover::-moz-range-thumb {
+  background: #ffdd57; }
+
+.is-danger input[type='range']:hover::-moz-range-thumb {
+  background: #f14668; }
+
+.is-primary input[type='range']:hover::-moz-range-thumb {
+  background: #ffdb0f; }
+
+.is-link input[type='range']:hover::-moz-range-thumb {
+  background: #3273dc; }
+
+/* The focused, not active state */
+.control input[type='range']:focus:not(:active)::-moz-range-track {
+  box-shadow: 0 0 0 0.125em rgba(50, 115, 220, 0.25);
+  border-color: #3273dc; }
+
+input[type='range']:focus:not(:active)::-moz-range-thumb {
+  box-shadow: 0 0 0 0.125em rgba(50, 115, 220, 0.25);
+  border-color: #3273dc; }
+
+/* color variants to the focused, not active state */
+.control .is-info input[type='range']:focus:not(:active)::-moz-range-track {
+  box-shadow: 0 0 0 0.125em rgba(175, 51, 35, 0.25);
+  border-color: #af3323; }
+
+.is-info input[type='range']:focus:not(:active)::-moz-range-thumb {
+  box-shadow: 0 0 0 0.125em rgba(175, 51, 35, 0.25);
+  border-color: #af3323; }
+
+.control .is-success input[type='range']:focus:not(:active)::-moz-range-track {
+  box-shadow: 0 0 0 0.125em rgba(72, 199, 116, 0.25);
+  border-color: #48c774; }
+
+.is-success input[type='range']:focus:not(:active)::-moz-range-thumb {
+  box-shadow: 0 0 0 0.125em rgba(72, 199, 116, 0.25);
+  border-color: #48c774; }
+
+.control .is-warning input[type='range']:focus:not(:active)::-moz-range-track {
+  box-shadow: 0 0 0 0.125em rgba(255, 221, 87, 0.25);
+  border-color: #ffdd57; }
+
+.is-warning input[type='range']:focus:not(:active)::-moz-range-thumb {
+  box-shadow: 0 0 0 0.125em rgba(255, 221, 87, 0.25);
+  border-color: #ffdd57; }
+
+.control .is-danger input[type='range']:focus:not(:active)::-moz-range-track {
+  box-shadow: 0 0 0 0.125em rgba(241, 70, 104, 0.25);
+  border-color: #f14668; }
+
+.is-danger input[type='range']:focus:not(:active)::-moz-range-thumb {
+  box-shadow: 0 0 0 0.125em rgba(241, 70, 104, 0.25);
+  border-color: #f14668; }
+
+.control .is-primary input[type='range']:focus:not(:active)::-moz-range-track {
+  box-shadow: 0 0 0 0.125em rgba(255, 219, 15, 0.25);
+  border-color: #ffdb0f; }
+
+.is-primary input[type='range']:focus:not(:active)::-moz-range-thumb {
+  box-shadow: 0 0 0 0.125em rgba(255, 219, 15, 0.25);
+  border-color: #ffdb0f; }
+
+.control .is-link input[type='range']:focus:not(:active)::-moz-range-track {
+  box-shadow: 0 0 0 0.125em rgba(50, 115, 220, 0.25);
+  border-color: #3273dc; }
+
+.is-link input[type='range']:focus:not(:active)::-moz-range-thumb {
+  box-shadow: 0 0 0 0.125em rgba(50, 115, 220, 0.25);
+  border-color: #3273dc; }
+
+/* HINT: Microsoft IE is not supported */
