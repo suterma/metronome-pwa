@@ -22,46 +22,76 @@
         </div>
     </div>
 
-    <div class="field is-horizontal">
+    <!-- The plus/minus buttons (only shown on smaller devices) -->
+    <div class="field is-horizontal is-hidden-desktop">
         <div class="field-label is-small">
             <label for="bpm" class="label">BPM</label>
         </div>
         <div class="field-body">
             <div class="field is-grouped">
-                <p class="control">
+                <p class="control is-expanded">
                     <button
-                        class="button is-info is-large is-outlined is-expanded"
+                        class="button is-info is-large is-outlined block"
                         @mousedown="changeBpm(-1)"
                         @keydown="changeBpm(-1)"
                     >
                         -
                     </button>
                 </p>
-                <p class="control">
+
+                <p class="control is-expanded">
+                    <!-- {{ beatsPerMinute }} -->
+                    <span
+                        class="
+                            input
+                            is-display is-info is-large is-readonly is-static
+                        "
+                        >{{ beatsPerMinute }}</span
+                    >
+                    <!-- <input
+                        class="input is-info is-large is-readonly is-static"
+                        type="number"
+                        id="bpm"
+                        v-model="beatsPerMinute"
+                        step="1"
+                    /> -->
+                </p>
+                <p class="control is-expanded">
                     <button
-                        class="button is-info is-large is-outlined is-expanded"
+                        class="button is-info is-large is-outlined block"
                         @mousedown="changeBpm(1)"
                         @keydown="changeBpm(1)"
                     >
                         +
                     </button>
                 </p>
-                <p class="control">
-                    <input
-                        class="input is-info is-large is-expanded"
-                        type="number"
-                        id="bpm"
-                        v-model="beatsPerMinute"
-                        step="1"
-                    />
-                </p>
             </div>
         </div>
     </div>
 
+    <!-- The BPM Text input (not shown on smaller devices) -->
+    <div class="field is-horizontal is-hidden-touch">
+        <div class="field-label is-small">
+            <label for="bpmTextbox" class="label">BPM</label>
+        </div>
+        <div class="field-body">
+            <div class="field">
+                <div class="control">
+                    <input
+                        class="input is-info is-large"
+                        type="number"
+                        id="bpmTextbox"
+                        v-model.number="beatsPerMinute"
+                    />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- The BPM Slider (always shown) -->
     <div class="field is-horizontal">
         <div class="field-label is-small">
-            <label for="bpmFader" class="label">BPM</label>
+            <label for="bpmFader" class="label is-sr-only">BPM</label>
         </div>
         <div class="field-body">
             <div class="field">
@@ -404,12 +434,7 @@ export default defineComponent({
             }
             mediaElement.play()
 
-            //TODO later remove, and use a separate visual click cue
-
-            // mediaElement.play().then(() => {
-            //     console.debug('playing done');
-            //     this.click = false;
-            // });
+            //TODO later provide an additional visual click cue
         },
     },
     created() {
@@ -460,4 +485,12 @@ input.is-large {
 input#bpm {
     /* max-width: 6em; */
 }
+
+/** Control, that is only used to display data, do not use the default width */
+.is-display.is-readonly.is-static {
+    max-width: unset;
+    width: auto;
+}
+
+/* //TODO additionally make the tap/stop button twice as high */
 </style>
