@@ -1,6 +1,4 @@
 <template>
-    <h1>Metronome</h1>
-
     <div class="field is-horizontal">
         <div class="field-label is-small">
             <label for="volume" class="label">Volume</label>
@@ -48,13 +46,6 @@
                         "
                         >{{ beatsPerMinute }}</span
                     >
-                    <!-- <input
-                        class="input is-info is-large is-readonly is-static"
-                        type="number"
-                        id="bpm"
-                        v-model="beatsPerMinute"
-                        step="1"
-                    /> -->
                 </p>
                 <p class="control is-expanded">
                     <button
@@ -110,119 +101,12 @@
         </div>
     </div>
 
-    <!-- <div class="field has-addons">
-        <label for="bpm" class="label">BPM</label>
-        <div class="control">
-            <input
-                class="input is-large"
-                type="number"
-                id="bpm"
-                v-model="beatsPerMinute"
-                step="1"
-            />
-        </div>
-        <p class="help is-success">This username is available</p>
-    </div> -->
-
-    <!-- <div class="field is-horizontal has-addons">
-        <div class="field-label is-small">
-            <label for="bpm" class="label">BPM</label>
-        </div>
-        <div class="field-body">
-            <div class="field">
-                <div class="control">
-                    <button
-                        class="button is-info is-large is-outlined"
-                        @mousedown="changeBpm(-1)"
-                        @keydown="changeBpm(-1)"
-                    >
-                        -
-                    </button>
-                </div>
-                <div class="control is-expanded">
-                    <input
-                        class="input is-large"
-                        type="number"
-                        id="bpm"
-                        v-model="beatsPerMinute"
-                        step="1"
-                    />
-                </div>
-                <div class="control">
-                    <button
-                        class="button is-info is-large is-outlined"
-                        @mousedown="changeBpm(1)"
-                        @keydown="changeBpm(1)"
-                    >
-                        +
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div> -->
-
-    <!-- <div class="columns">
-        <div class="column is-one-fifth">
-            <label for="volume" class="is-hidden-mobile">Volume</label>
-        </div>
-
-        <div class="column">
-            <input
-                class="is-info is-large is-outlined block"
-                type="range"
-                id="volume"
-                min="0"
-                max="2"
-                v-model="volume"
-                step="0.01"
-            />
-        </div>
-        <div class="column is-one-fifth">
-            <span class="is-hidden-mobile">{{ volume }}</span>
-        </div>
-    </div>
-
-    <div class="columns">
-        <div class="column is-one-fifth">
-            <label for="bpm" class="is-hidden-mobile">BPM</label>
-        </div>
-        <div class="column">
-            <span class="block">
-                <button
-                    class="button is-info is-large is-outlined"
-                    @mousedown="changeBpm(-1)"
-                    @keydown="changeBpm(-1)"
-                >
-                    -
-                </button>
-                <input
-                    class="is-info is-large is-outlined"
-                    type="number"
-                    id="bpm"
-                    name="bpm"
-                    :min="bpmMin"
-                    :max="bpmMax"
-                    step="1"
-                    v-model="beatsPerMinute"
-                    @change="updateBpm"
-                />
-                <button
-                    class="button is-info is-large is-outlined"
-                    @mousedown="changeBpm(1)"
-                    @keydown="changeBpm(1)"
-                >
-                    +
-                </button>
-            </span>
-        </div>
-        <div class="column is-one-fifth">
-            <span>{{ beatsPerMinute.toLocaleString() }}</span>
-        </div>
-    </div> -->
     <div class="columns">
         <div class="column is-full">
-            {{ sequnceTapCount }}{{ click }} BPM:{{ beatsPerMinute }} Running:
-            {{ isRunning }} Volume: {{ volume }}
+            DEBUG: {{ sequnceTapCount }}{{ click }} BPM:{{
+                beatsPerMinute
+            }}
+            Running: {{ isRunning }} Volume: {{ volume }}
             <!-- The audio element is not shown. All relevant controls are provided as separate elements -->
             <audio src="../../audio/drumsticks.wav" id="soundelement"></audio>
         </div>
@@ -248,6 +132,16 @@
             </button>
         </div>
     </div>
+
+    <h1>About</h1>
+    <p>
+        <a href="https://metronome.replayer.ch">Metronome</a>
+        (c) by <a href="https://marcelsuter.ch">Marcel Suter</a>. Licensed under
+        the
+        <a href="https://www.gnu.org/licenses/gpl-3.0.txt"
+            >GNU General Public License, Version 3 (GPLv3)</a
+        >
+    </p>
 
     <h1>Credits</h1>
     <p>
