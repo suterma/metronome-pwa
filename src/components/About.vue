@@ -1,0 +1,95 @@
+<template>
+    <!-- About Card -->
+    <a href="#" @click="show" class="navbar-item">About</a>
+    <div :class="isActive ? 'modal is-active' : 'modal'">
+        <div class="modal-background" @click="hide"></div>
+        <div class="modal-card">
+            <!-- <header class="modal-card-head">
+                <p class="modal-card-title">About</p>
+                <button
+                    class="delete is-large"
+                    aria-label="close"
+                    @click="hide"
+                ></button>
+            </header> -->
+            <section class="modal-card-body">
+                <div class="content">
+                    <h1 class="title">About</h1>
+                    <p>
+                        <a href="https://metronome.replayer.ch">Metronome</a>
+                        (c) by
+                        <a href="https://marcelsuter.ch">Marcel Suter</a>.
+                        Licensed under the
+                        <a href="https://www.gnu.org/licenses/gpl-3.0.txt"
+                            >GNU General Public License, Version 3 (GPLv3)</a
+                        >
+                    </p>
+
+                    <h1 class="title">Credits</h1>
+                    <ul>
+                        <li>
+                            <a href="https://vuejs.org/"
+                                >Vue.js, The Progressive JavaScript Framework</a
+                            >
+                            © 2014-2021 Evan You. Licensed under the
+                            <a href="https://opensource.org/licenses/MIT"
+                                >MIT License</a
+                            >
+                        </li>
+                        <li>
+                            <a href="https://bulma.io/">Bulma CSS Framework</a>
+                            © Jeremy Thomas. Licensed under the
+                            <a href="https://opensource.org/licenses/MIT"
+                                >MIT License</a
+                            >
+                        </li>
+                        <li>
+                            <a
+                                href="https://freesound.org/people/PrimeJunt/sounds/135627/#"
+                                >Drum stick sample</a
+                            >
+                            © PrimeJunt, minified. Licensed under
+                            <a
+                                href="https://creativecommons.org/licenses/by/3.0/"
+                                >Creative Commons Attribution 3.0 Unported (CC
+                                BY 3.0)</a
+                            >
+                        </li>
+                    </ul>
+                </div>
+            </section>
+            <footer class="modal-card-foot">
+                <button class="button is-primary is-large" @click="hide">
+                    Close
+                </button>
+            </footer>
+        </div>
+    </div>
+</template>
+
+<script lang="ts">
+import { defineComponent } from 'vue'
+
+/** This is an about component for the metronome app
+ */
+export default defineComponent({
+    components: {},
+    props: {},
+    data() {
+        return {
+            /** Whether the about modal is shown */
+            isActive: false,
+        }
+    },
+    methods: {
+        show(): void {
+            this.isActive = true
+        },
+        hide(): void {
+            this.isActive = false
+        },
+    },
+})
+</script>
+
+<style scoped></style>

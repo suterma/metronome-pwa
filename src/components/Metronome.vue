@@ -1,13 +1,13 @@
 <template>
     <div class="field is-horizontal">
-        <div class="field-label is-small">
+        <div class="field-label">
             <label for="volume" class="label">Volume</label>
         </div>
         <div class="field-body">
             <div class="field">
                 <div class="control">
                     <Fader
-                        class="input is-link is-large is-info"
+                        classNames="input is-link is-large is-info"
                         type="range"
                         id="volume"
                         :min="0"
@@ -22,7 +22,7 @@
 
     <!-- The plus/minus buttons (only shown on smaller devices) -->
     <div class="field is-horizontal is-hidden-desktop">
-        <div class="field-label is-small">
+        <div class="field-label">
             <label for="bpm" class="label">BPM</label>
         </div>
         <div class="field-body">
@@ -62,7 +62,7 @@
 
     <!-- The BPM Text input (not shown on smaller devices) -->
     <div class="field is-horizontal is-hidden-touch">
-        <div class="field-label is-small">
+        <div class="field-label">
             <label for="bpmTextbox" class="label">BPM</label>
         </div>
         <div class="field-body">
@@ -81,14 +81,14 @@
 
     <!-- The BPM Slider (always shown) -->
     <div class="field is-horizontal">
-        <div class="field-label is-small">
+        <div class="field-label">
             <label for="bpmFader" class="label is-sr-only">BPM</label>
         </div>
         <div class="field-body">
             <div class="field">
                 <div class="control">
                     <Fader
-                        class="input is-info is-large"
+                        classNames="input is-info is-large"
                         type="range"
                         id="bpmFader"
                         :min="35"
@@ -136,27 +136,6 @@
             </button>
         </div>
     </div>
-
-    <h1>About</h1>
-    <p>
-        <a href="https://metronome.replayer.ch">Metronome</a>
-        (c) by <a href="https://marcelsuter.ch">Marcel Suter</a>. Licensed under
-        the
-        <a href="https://www.gnu.org/licenses/gpl-3.0.txt"
-            >GNU General Public License, Version 3 (GPLv3)</a
-        >
-    </p>
-
-    <h1>Credits</h1>
-    <p>
-        <a href="https://freesound.org/people/PrimeJunt/sounds/135627/#"
-            >Drum stick sample</a
-        >
-        (c) by PrimeJunt, minified. Licensed under
-        <a href="https://creativecommons.org/licenses/by/3.0/"
-            >Creative Commons Attribution 3.0 Unported (CC BY 3.0)</a
-        >
-    </p>
 </template>
 
 <script lang="ts">
@@ -350,29 +329,6 @@ export default defineComponent({
 </script>
 
 <style scoped>
-/** For this app, use center-aligned controls */
-.column {
-}
-.control-group {
-    /* width: 100%; */
-}
-/** A button, sized for fingered input */
-input.is-large {
-    /* min-width: 2.5cm;
-    min-height: 2.5cm; */
-}
-
-/** Metronome buttons have a distinct outlined style */
-.button.is-outlined {
-    /* border-width: 3mm;
-    background-color: transparent; */
-}
-
-/** Only very slightly indicate hover */
-.button.is-outlined:hover {
-    /* background-color: #803535dd; */
-}
-
 /** Fill the available space */
 .block {
     display: block;
@@ -380,15 +336,9 @@ input.is-large {
     text-align: center;
 }
 
-input#bpm {
-    /* max-width: 6em; */
-}
-
 /** Control, that is only used to display data, do not use the default width */
 .is-display.is-readonly.is-static {
     max-width: unset;
     width: auto;
 }
-
-/* //TODO additionally make the tap/stop button twice as high */
 </style>
