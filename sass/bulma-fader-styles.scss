@@ -8,21 +8,21 @@
     border-color: $background;
 }
 
-/* Customized range input styles*/
-input[type='range'] {
+/* Customized range.input styles*/
+.input[type='range'] {
     -webkit-appearance: none;
     margin: 18px 0;
     width: 100%;
     background-color: $white; /*equals to the page background*/
 }
-input[type='range']:focus {
+.input[type='range']:focus {
     outline: none;
 }
 
 /*-- BELOW: variant for webkit (Google Chrome et al) ---*/
 
 /* The track */
-input[type='range']::-webkit-slider-runnable-track {
+.input[type='range']::-webkit-slider-runnable-track {
     width: 100%;
     height: 8.4px;
     cursor: pointer;
@@ -31,31 +31,31 @@ input[type='range']::-webkit-slider-runnable-track {
     border: 2px solid $text;
 }
 
-/* color variants to input[type='range']::-webkit-slider-runnable-track */
-.is-info input[type='range']::-webkit-slider-runnable-track {
+/* color variants to.input[type='range']::-webkit-slider-runnable-track */
+.is-info.input[type='range']::-webkit-slider-runnable-track {
     border: 2px solid $info;
 }
-.is-success input[type='range']::-webkit-slider-runnable-track {
+.is-success.input[type='range']::-webkit-slider-runnable-track {
     border: 2px solid $success;
 }
-.is-warning input[type='range']::-webkit-slider-runnable-track {
+.is-warning.input[type='range']::-webkit-slider-runnable-track {
     border: 2px solid $warning;
 }
-.is-danger input[type='range']::-webkit-slider-runnable-track {
+.is-danger.input[type='range']::-webkit-slider-runnable-track {
     border: 2px solid $danger;
 }
-.is-primary input[type='range']::-webkit-slider-runnable-track {
+.is-primary.input[type='range']::-webkit-slider-runnable-track {
     border: 2px solid $primary;
 }
-.is-link input[type='range']::-webkit-slider-runnable-track {
+.is-link.input[type='range']::-webkit-slider-runnable-track {
     border: 2px solid $link;
 }
 
 /* The Thumb*/
-input[type='range']::-webkit-slider-thumb {
+.input[type='range']::-webkit-slider-thumb {
     border: 2px solid $text;
-    height: calc(5em - 6px);
-    width: calc(5em - 6px);
+    height: 2.5em;
+    width: 2.5em;
     border-radius: $radius;
     background: $white; /*equals to the page background*/
     cursor: pointer;
@@ -63,58 +63,58 @@ input[type='range']::-webkit-slider-thumb {
     margin-top: -28px;
 }
 
-/* color variants to input[type='range']::-webkit-slider-thumb */
-.is-info input[type='range']::-webkit-slider-thumb {
+/* color variants to.input[type='range']::-webkit-slider-thumb */
+.is-info.input[type='range']::-webkit-slider-thumb {
     border: 2px solid $info;
 }
-.is-success input[type='range']::-webkit-slider-thumb {
+.is-success.input[type='range']::-webkit-slider-thumb {
     border: 2px solid $success;
 }
-.is-warning input[type='range']::-webkit-slider-thumb {
+.is-warning.input[type='range']::-webkit-slider-thumb {
     border: 2px solid $warning;
 }
-.is-danger input[type='range']::-webkit-slider-thumb {
+.is-danger.input[type='range']::-webkit-slider-thumb {
     border: 2px solid $danger;
 }
-.is-primary input[type='range']::-webkit-slider-thumb {
+.is-primary.input[type='range']::-webkit-slider-thumb {
     border: 2px solid $primary;
 }
-.is-link input[type='range']::-webkit-slider-thumb {
+.is-link.input[type='range']::-webkit-slider-thumb {
     border: 2px solid $link;
 }
 
 /* The hovering state */
 
-input[type='range']:hover::-webkit-slider-thumb {
+.input[type='range']:hover::-webkit-slider-thumb {
     background: $text;
 }
 
 /* color variants to the hovering state */
-.is-info input[type='range']:hover::-webkit-slider-thumb {
+.is-info.input[type='range']:hover::-webkit-slider-thumb {
     background: $info;
 }
-.is-success input[type='range']:hover::-webkit-slider-thumb {
+.is-success.input[type='range']:hover::-webkit-slider-thumb {
     background: $success;
 }
-.is-warning input[type='range']:hover::-webkit-slider-thumb {
+.is-warning.input[type='range']:hover::-webkit-slider-thumb {
     background: $warning;
 }
-.is-danger input[type='range']:hover::-webkit-slider-thumb {
+.is-danger.input[type='range']:hover::-webkit-slider-thumb {
     background: $danger;
 }
-.is-primary input[type='range']:hover::-webkit-slider-thumb {
+.is-primary.input[type='range']:hover::-webkit-slider-thumb {
     background: $primary;
 }
-.is-link input[type='range']:hover::-webkit-slider-thumb {
+.is-link.input[type='range']:hover::-webkit-slider-thumb {
     background: $link;
 }
 
 /* The focused, not active state */
-.control input[type='range']:focus:not(:active)::-webkit-slider-runnable-track {
+.control.input[type='range']:focus:not(:active)::-webkit-slider-runnable-track {
     box-shadow: 0 0 0 0.125em bulmaRgba($link, 0.25);
     border-color: $link;
 }
-input[type='range']:focus:not(:active)::-webkit-slider-thumb {
+.input[type='range']:focus:not(:active)::-webkit-slider-thumb {
     box-shadow: 0 0 0 0.125em bulmaRgba($link, 0.25);
     border-color: $link;
 }
@@ -123,61 +123,59 @@ input[type='range']:focus:not(:active)::-webkit-slider-thumb {
 
 .control
     .is-info
-    input[type='range']:focus:not(:active)::-webkit-slider-runnable-track {
+    .input[type='range']:focus:not(:active)::-webkit-slider-runnable-track {
     box-shadow: 0 0 0 0.125em bulmaRgba($info, 0.25);
     border-color: $info;
 }
-.is-info input[type='range']:focus:not(:active)::-webkit-slider-thumb {
+.is-info.input[type='range']:focus:not(:active)::-webkit-slider-thumb {
     box-shadow: 0 0 0 0.125em bulmaRgba($info, 0.25);
     border-color: $info;
 }
 .control
     .is-success
-    input[type='range']:focus:not(:active)::-webkit-slider-runnable-track {
+    .input[type='range']:focus:not(:active)::-webkit-slider-runnable-track {
     box-shadow: 0 0 0 0.125em bulmaRgba($success, 0.25);
     border-color: $success;
 }
-.is-success input[type='range']:focus:not(:active)::-webkit-slider-thumb {
+.is-success.input[type='range']:focus:not(:active)::-webkit-slider-thumb {
     box-shadow: 0 0 0 0.125em bulmaRgba($success, 0.25);
     border-color: $success;
 }
 .control
     .is-warning
-    input[type='range']:focus:not(:active)::-webkit-slider-runnable-track {
+    .input[type='range']:focus:not(:active)::-webkit-slider-runnable-track {
     box-shadow: 0 0 0 0.125em bulmaRgba($warning, 0.25);
     border-color: $warning;
 }
-.is-warning input[type='range']:focus:not(:active)::-webkit-slider-thumb {
+.is-warning.input[type='range']:focus:not(:active)::-webkit-slider-thumb {
     box-shadow: 0 0 0 0.125em bulmaRgba($warning, 0.25);
     border-color: $warning;
 }
-.control
-    .is-danger
-    input[type='range']:focus:not(:active)::-webkit-slider-runnable-track {
+.control.is-danger.input[type='range']:focus:not(:active)::-webkit-slider-runnable-track {
     box-shadow: 0 0 0 0.125em bulmaRgba($danger, 0.25);
     border-color: $danger;
 }
-.is-danger input[type='range']:focus:not(:active)::-webkit-slider-thumb {
+.is-danger.input[type='range']:focus:not(:active)::-webkit-slider-thumb {
     box-shadow: 0 0 0 0.125em bulmaRgba($danger, 0.25);
     border-color: $danger;
 }
 .control
     .is-primary
-    input[type='range']:focus:not(:active)::-webkit-slider-runnable-track {
+    .input[type='range']:focus:not(:active)::-webkit-slider-runnable-track {
     box-shadow: 0 0 0 0.125em bulmaRgba($primary, 0.25);
     border-color: $primary;
 }
-.is-primary input[type='range']:focus:not(:active)::-webkit-slider-thumb {
+.is-primary.input[type='range']:focus:not(:active)::-webkit-slider-thumb {
     box-shadow: 0 0 0 0.125em bulmaRgba($primary, 0.25);
     border-color: $primary;
 }
 .control
     .is-link
-    input[type='range']:focus:not(:active)::-webkit-slider-runnable-track {
+    .input[type='range']:focus:not(:active)::-webkit-slider-runnable-track {
     box-shadow: 0 0 0 0.125em bulmaRgba($link, 0.25);
     border-color: $link;
 }
-.is-link input[type='range']:focus:not(:active)::-webkit-slider-thumb {
+.is-link.input[type='range']:focus:not(:active)::-webkit-slider-thumb {
     box-shadow: 0 0 0 0.125em bulmaRgba($link, 0.25);
     border-color: $link;
 }
@@ -185,7 +183,7 @@ input[type='range']:focus:not(:active)::-webkit-slider-thumb {
 /*-- BELOW: variant for mozilla (Firefox) ---*/
 
 /* The track */
-input[type='range']::-moz-range-track {
+.input[type='range']::-moz-range-track {
     width: 100%;
     height: 8.4px;
     cursor: pointer;
@@ -194,31 +192,31 @@ input[type='range']::-moz-range-track {
     border: 2px solid $text;
 }
 
-/* color variants to input[type='range']::-moz-range-track */
-.is-info input[type='range']::-moz-range-track {
+/* color variants to.input[type='range']::-moz-range-track */
+.is-info.input[type='range']::-moz-range-track {
     border: 2px solid $info;
 }
-.is-success input[type='range']::-moz-range-track {
+.is-success.input[type='range']::-moz-range-track {
     border: 2px solid $success;
 }
-.is-warning input[type='range']::-moz-range-track {
+.is-warning.input[type='range']::-moz-range-track {
     border: 2px solid $warning;
 }
-.is-danger input[type='range']::-moz-range-track {
+.is-danger.input[type='range']::-moz-range-track {
     border: 2px solid $danger;
 }
-.is-primary input[type='range']::-moz-range-track {
+.is-primary.input[type='range']::-moz-range-track {
     border: 2px solid $primary;
 }
-.is-link input[type='range']::-moz-range-track {
+.is-link.input[type='range']::-moz-range-track {
     border: 2px solid $link;
 }
 
 /* The Thumb*/
-input[type='range']::-moz-range-thumb {
+.input[type='range']::-moz-range-thumb {
     border: 2px solid $text;
-    height: calc(5em - 6px);
-    width: calc(5em - 6px);
+    height: 2.5em;
+    width: 2.5em;
     border-radius: $radius;
     background: $white; /*equals to the page background*/
     cursor: pointer;
@@ -226,109 +224,109 @@ input[type='range']::-moz-range-thumb {
     margin-top: -28px;
 }
 
-/* color variants to input[type='range']::-moz-range-thumb */
-.is-info input[type='range']::-moz-range-thumb {
+/* color variants to.input[type='range']::-moz-range-thumb */
+.is-info.input[type='range']::-moz-range-thumb {
     border: 2px solid $info;
 }
-.is-success input[type='range']::-moz-range-thumb {
+.is-success.input[type='range']::-moz-range-thumb {
     border: 2px solid $success;
 }
-.is-warning input[type='range']::-moz-range-thumb {
+.is-warning.input[type='range']::-moz-range-thumb {
     border: 2px solid $warning;
 }
-.is-danger input[type='range']::-moz-range-thumb {
+.is-danger.input[type='range']::-moz-range-thumb {
     border: 2px solid $danger;
 }
-.is-primary input[type='range']::-moz-range-thumb {
+.is-primary.input[type='range']::-moz-range-thumb {
     border: 2px solid $primary;
 }
-.is-link input[type='range']::-moz-range-thumb {
+.is-link.input[type='range']::-moz-range-thumb {
     border: 2px solid $link;
 }
 
 /* The hovering state */
 
-input[type='range']:hover::-moz-range-thumb {
+.input[type='range']:hover::-moz-range-thumb {
     background: $text;
 }
 
 /* color variants to the hovering state */
-.is-info input[type='range']:hover::-moz-range-thumb {
+.is-info.input[type='range']:hover::-moz-range-thumb {
     background: $info;
 }
-.is-success input[type='range']:hover::-moz-range-thumb {
+.is-success.input[type='range']:hover::-moz-range-thumb {
     background: $success;
 }
-.is-warning input[type='range']:hover::-moz-range-thumb {
+.is-warning.input[type='range']:hover::-moz-range-thumb {
     background: $warning;
 }
-.is-danger input[type='range']:hover::-moz-range-thumb {
+.is-danger.input[type='range']:hover::-moz-range-thumb {
     background: $danger;
 }
-.is-primary input[type='range']:hover::-moz-range-thumb {
+.is-primary.input[type='range']:hover::-moz-range-thumb {
     background: $primary;
 }
-.is-link input[type='range']:hover::-moz-range-thumb {
+.is-link.input[type='range']:hover::-moz-range-thumb {
     background: $link;
 }
 
 /* The focused, not active state */
-.control input[type='range']:focus:not(:active)::-moz-range-track {
+.control.input[type='range']:focus:not(:active)::-moz-range-track {
     box-shadow: 0 0 0 0.125em bulmaRgba($link, 0.25);
     border-color: $link;
 }
-input[type='range']:focus:not(:active)::-moz-range-thumb {
+.input[type='range']:focus:not(:active)::-moz-range-thumb {
     box-shadow: 0 0 0 0.125em bulmaRgba($link, 0.25);
     border-color: $link;
 }
 
 /* color variants to the focused, not active state */
 
-.control .is-info input[type='range']:focus:not(:active)::-moz-range-track {
+.control .is-info.input[type='range']:focus:not(:active)::-moz-range-track {
     box-shadow: 0 0 0 0.125em bulmaRgba($info, 0.25);
     border-color: $info;
 }
-.is-info input[type='range']:focus:not(:active)::-moz-range-thumb {
+.is-info.input[type='range']:focus:not(:active)::-moz-range-thumb {
     box-shadow: 0 0 0 0.125em bulmaRgba($info, 0.25);
     border-color: $info;
 }
-.control .is-success input[type='range']:focus:not(:active)::-moz-range-track {
+.control .is-success.input[type='range']:focus:not(:active)::-moz-range-track {
     box-shadow: 0 0 0 0.125em bulmaRgba($success, 0.25);
     border-color: $success;
 }
-.is-success input[type='range']:focus:not(:active)::-moz-range-thumb {
+.is-success.input[type='range']:focus:not(:active)::-moz-range-thumb {
     box-shadow: 0 0 0 0.125em bulmaRgba($success, 0.25);
     border-color: $success;
 }
-.control .is-warning input[type='range']:focus:not(:active)::-moz-range-track {
+.control .is-warning.input[type='range']:focus:not(:active)::-moz-range-track {
     box-shadow: 0 0 0 0.125em bulmaRgba($warning, 0.25);
     border-color: $warning;
 }
-.is-warning input[type='range']:focus:not(:active)::-moz-range-thumb {
+.is-warning.input[type='range']:focus:not(:active)::-moz-range-thumb {
     box-shadow: 0 0 0 0.125em bulmaRgba($warning, 0.25);
     border-color: $warning;
 }
-.control .is-danger input[type='range']:focus:not(:active)::-moz-range-track {
+.control .is-danger.input[type='range']:focus:not(:active)::-moz-range-track {
     box-shadow: 0 0 0 0.125em bulmaRgba($danger, 0.25);
     border-color: $danger;
 }
-.is-danger input[type='range']:focus:not(:active)::-moz-range-thumb {
+.is-danger.input[type='range']:focus:not(:active)::-moz-range-thumb {
     box-shadow: 0 0 0 0.125em bulmaRgba($danger, 0.25);
     border-color: $danger;
 }
-.control .is-primary input[type='range']:focus:not(:active)::-moz-range-track {
+.control .is-primary.input[type='range']:focus:not(:active)::-moz-range-track {
     box-shadow: 0 0 0 0.125em bulmaRgba($primary, 0.25);
     border-color: $primary;
 }
-.is-primary input[type='range']:focus:not(:active)::-moz-range-thumb {
+.is-primary.input[type='range']:focus:not(:active)::-moz-range-thumb {
     box-shadow: 0 0 0 0.125em bulmaRgba($primary, 0.25);
     border-color: $primary;
 }
-.control .is-link input[type='range']:focus:not(:active)::-moz-range-track {
+.control .is-link.input[type='range']:focus:not(:active)::-moz-range-track {
     box-shadow: 0 0 0 0.125em bulmaRgba($link, 0.25);
     border-color: $link;
 }
-.is-link input[type='range']:focus:not(:active)::-moz-range-thumb {
+.is-link.input[type='range']:focus:not(:active)::-moz-range-thumb {
     box-shadow: 0 0 0 0.125em bulmaRgba($link, 0.25);
     border-color: $link;
 }
