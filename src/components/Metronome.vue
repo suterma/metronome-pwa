@@ -124,7 +124,11 @@
 
         <div class="column is-half">
             <button
-                class="button is-primary is-large is-outlined block"
+                class="
+                    button
+                    is-primary is-large is-double-height is-outlined
+                    block
+                "
                 @mousedown="tap"
                 @keydown="tap"
             >

@@ -1,0 +1,9 @@
+@charset "utf-8";
+
+/** These are specific bulma styles for the button component
+* @remarks These styles are currently only written to work for is-large controls.*/
+
+/* A Button of double height */
+.is-large.is-double-height.button {
+    height: 5em;
+}

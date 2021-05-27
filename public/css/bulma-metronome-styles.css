@@ -7496,3 +7496,8 @@ input[type='range']:focus:not(:active)::-moz-range-thumb {
   border-color: #3273dc; }
 
 /* HINT: Microsoft IE is not supported */
+/** These are specific bulma styles for the button component
+* @remarks These styles are currently only written to work for is-large controls.*/
+/* A Button of double height */
+.is-large.is-double-height.button {
+  height: 5em; }
