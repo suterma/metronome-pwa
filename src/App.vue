@@ -3,7 +3,7 @@
     <nav class="navbar" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
             <a class="navbar-item" href="https://metronome.replayer.ch">
-                metrononme
+                metronome
             </a>
 
             <div class="navbar-end">
@@ -22,9 +22,9 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
-import Metronome from './components/Metronome.vue'
-import About from './components/About.vue'
+import { defineComponent } from 'vue';
+import Metronome from './components/Metronome.vue';
+import About from './components/About.vue';
 
 export default defineComponent({
     name: 'App',
@@ -32,7 +32,7 @@ export default defineComponent({
         Metronome,
         About,
     },
-})
+});
 </script>
 
 <style>

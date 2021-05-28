@@ -54,3 +54,7 @@ To run both the SASS autocompilation and npm's serve script, use two terminals. 
 ## Aligning the Buttons with controls
 
 https://css-tricks.com/snippets/css/a-guide-to-flexbox/
+
+## Resources
+
+-   [Getting Started with Web Audio API](https://www.html5rocks.com/en/tutorials/webaudio/intro/) is a very good intro into the Audio API

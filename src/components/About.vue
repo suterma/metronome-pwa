@@ -55,6 +55,16 @@
                                 BY 3.0)</a
                             >
                         </li>
+                        <li>
+                            <a
+                                href="https://www.npmjs.com/package/base64-arraybuffer"
+                                >base64-arraybuffer</a
+                            >
+                            © 2012 Niklas von Hertzen. Licensed under the
+                            <a href="https://opensource.org/licenses/MIT"
+                                >MIT License</a
+                            >
+                        </li>
                     </ul>
                 </div>
             </section>

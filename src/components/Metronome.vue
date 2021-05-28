@@ -107,8 +107,6 @@
                 beatsPerMinute
             }}
             Running: {{ isRunning }} Volume: {{ volume }}
-            <!-- The audio element is not shown. All relevant controls are provided as separate elements -->
-            <audio src="../../audio/drumsticks.wav" id="soundelement"></audio>
         </div>
     </div>
     <div class="columns">
@@ -141,10 +139,13 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import Fader from '@/components/Fader.vue'
+import samples from './samples.json'
+import { decode } from 'base64-arraybuffer'
 
 //TODO this does not feel right, how to make this into the component?
 let audioContext: AudioContext
 let gainNode: GainNode
+let bufferSource: AudioBufferSourceNode
 let metronomeIntervalId: any
 
 /** This is metronome component that allows setting or tapping in a Beats-Per-Minute speed
@@ -285,31 +286,56 @@ export default defineComponent({
             this.playClick()
             console.log('run')
         },
-        /** Plays the click sound */
+        /** Plays the click sound once
+         * @remarks Also initializes the audio context.
+         * @devdoc Initializing the audio context and playing a sample is only allowed after the first user interaction
+         */
         playClick(): void {
             console.debug('Metronome::playClick')
             this.click = true
 
-            //TODO how to properly address with distict ID?
-            const mediaElement = document.getElementById(
-                'soundelement',
-            ) as HTMLMediaElement
             //Create the audio context (must be called after the first user interaction to avoid exception)
             if (!audioContext) {
                 console.log('creating new AudioContext')
                 audioContext = new AudioContext()
 
                 //Prepare the sound source
-                const track =
-                    audioContext.createMediaElementSource(mediaElement)
+                console.debug('Special buffer sound')
+                let byteArray = decode(samples[0].buffer)
 
-                //Allow gain control
-                gainNode = audioContext.createGain()
+                console.debug('Decoding audio data')
+                audioContext.decodeAudioData(
+                    byteArray,
+                    function (buffer) {
+                        bufferSource = audioContext.createBufferSource() // creates a sound source
+                        bufferSource.buffer = buffer
+                        bufferSource.connect(gainNode) // connect the source to the destination
+                        bufferSource.start()
+                    },
+                    function (err) {
+                        console.log('err(decodeAudioData): ' + err)
+                    },
+                )
+
+                // var buffer = await audioContext.decodeAudioData(byteArray)
+                // var bufferSource = audioContext.createBufferSource()
+                // bufferSource.buffer = buffer;
 
                 //Wire the chain up
-                track.connect(gainNode).connect(audioContext.destination)
+                gainNode = audioContext.createGain()
+                gainNode.connect(audioContext.destination)
             }
-            mediaElement.play()
+            //TODO continue here....
+            //TODO try to initialize the sound api as much as possible at startup, at least loading the sound
+            //TODO use Lighthouse to assess the performance implications of loading loading from base64
+            //TODO this does not work the first time, should start in async success method above
+            //TODO use this as the single, looped call upon changing the BPM, start the run
+            if (bufferSource) {
+                bufferSource.loop = true
+                bufferSource.loopStart = 0 //Default, start from the beginning
+                bufferSource.loopEnd = 0.5
+                bufferSource.start()
+            }
 
             //TODO later provide an additional visual click cue
         },
