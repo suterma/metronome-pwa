@@ -67,6 +67,7 @@ export default defineComponent({
             this.isActive = false
             console.debug('SelectBpm::select: ', beatsPerMinute)
             this.$emit('update:modelValue', beatsPerMinute)
+            //TODO later use vuex storage
         },
     },
 })

@@ -80,9 +80,9 @@
             </div>
         </div>
     </div>
-
+    <!-- The running indicator -->
     <div :class="isRunning ? 'notification is-link' : 'notification'">
-        Running
+        <span v-show="isRunning"> Running </span>&nbsp;
     </div>
 
     <!-- <div class="columns">
@@ -270,6 +270,7 @@ export default defineComponent({
             let thisTap = performance.now()
 
             //stop looping an already running node
+            //TODO fix: when the user clicks early in a sequence (e.g the loop has just not yet restarted), this will cause that there is no audible click
             if (sampleBufferSourceNode) {
                 sampleBufferSourceNode.loop = false
             }

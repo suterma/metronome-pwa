@@ -2,15 +2,16 @@
     <!-- The Navbar -->
     <nav class="navbar" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
-            <a class="navbar-item" href="https://metronome.replayer.ch">
+            <a class="navbar-item" href="https://tic.replayer.ch">
                 metronome
             </a>
 
-            <div class="navbar">
+            <!-- //TOOD later use vue-router and vuex store for the bpm value -->
+            <!-- <div class="navbar">
                 <div class="navbar-item">
                     <SelectBpm />
                 </div>
-            </div>
+            </div> -->
             <div class="navbar-end">
                 <div class="navbar-item">
                     <About />
@@ -30,14 +31,14 @@
 import { defineComponent } from 'vue'
 import Metronome from './components/Metronome.vue'
 import About from './components/About.vue'
-import SelectBpm from './components/SelectBpm.vue'
+// import SelectBpm from './components/SelectBpm.vue'
 
 export default defineComponent({
     name: 'App',
     components: {
         Metronome,
         About,
-        SelectBpm,
+        // SelectBpm,
     },
 })
 </script>
