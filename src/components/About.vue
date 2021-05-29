@@ -65,6 +65,16 @@
                                 >MIT License</a
                             >
                         </li>
+                        <li>
+                            <a
+                                href="https://www.svgrepo.com/svg/30590/drumstick"
+                                >Drumstick SVG Vector</a
+                            >Icon by SVG Repo. Licensed under the
+                            <a
+                                href="https://creativecommons.org/share-your-work/public-domain/cc0/"
+                                >CC0 License</a
+                            >
+                        </li>
                     </ul>
                 </div>
             </section>
