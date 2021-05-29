@@ -1,25 +1,4 @@
 <template>
-    <div class="field is-horizontal">
-        <div class="field-label">
-            <label for="volume" class="label">Volume</label>
-        </div>
-        <div class="field-body">
-            <div class="field">
-                <div class="control">
-                    <Fader
-                        classNames="input is-link is-large is-info"
-                        type="range"
-                        id="volume"
-                        :min="0"
-                        :max="2"
-                        :step="0.01"
-                        v-model.number="volume"
-                    />
-                </div>
-            </div>
-        </div>
-    </div>
-
     <!-- The plus/minus buttons (only shown on smaller devices) -->
     <div class="field is-horizontal is-hidden-desktop">
         <div class="field-label">
@@ -95,18 +74,45 @@
                         :max="180"
                         :step="1"
                         v-model.number="beatsPerMinute"
+                        @change="updateBpm"
                     />
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="columns">
+    <div :class="isRunning ? 'notification is-link' : 'notification'">
+        Running
+    </div>
+
+    <!-- <div class="columns">
         <div class="column is-full">
             DEBUG: {{ sequnceTapCount }}{{ click }} BPM:{{
                 beatsPerMinute
             }}
             Running: {{ isRunning }} Volume: {{ volume }}
+        </div>
+    </div> -->
+
+    <!-- The volume slider -->
+    <div class="field is-horizontal">
+        <div class="field-label">
+            <label for="volume" class="label">Volume</label>
+        </div>
+        <div class="field-body">
+            <div class="field">
+                <div class="control">
+                    <Fader
+                        classNames="input is-link is-large is-info"
+                        type="range"
+                        id="volume"
+                        :min="0"
+                        :max="2"
+                        :step="0.01"
+                        v-model.number="volume"
+                    />
+                </div>
+            </div>
         </div>
     </div>
     <div class="columns">
@@ -119,7 +125,6 @@
                 Run
             </button>
         </div>
-
         <div class="column is-half">
             <button
                 class="
@@ -141,11 +146,17 @@ import { defineComponent } from 'vue'
 import Fader from '@/components/Fader.vue'
 import samples from './samples.json'
 import { decode } from 'base64-arraybuffer'
+import { setTimeout } from 'timers'
 
 //TODO this does not feel right, how to make this into the component?
 let audioContext: AudioContext
 let gainNode: GainNode
-let bufferSource: AudioBufferSourceNode
+/** The loaded sample data, ready to be used with an AudioBufferSourceNode */
+let sampleBuffer: AudioBuffer
+/** The playable buffer source node, that emits the click sound
+ * @remarks Defined here, because it is to be used only once at a time, and stopped/recreated as needed
+ */
+let sampleBufferSourceNode: AudioBufferSourceNode
 let metronomeIntervalId: any
 
 /** This is metronome component that allows setting or tapping in a Beats-Per-Minute speed
@@ -229,75 +240,103 @@ export default defineComponent({
             }
         },
 
+        /** Updates the BPM rate (period) to the given value
+         * @remarks If the metronome was not running, it's started now.
+         * @remarks The Audio Context is expected to be ready
+         * @param period The period of the beat, in seconds
+         */
+        updatePeriod(period: number): void {
+            console.debug('Metronome::updatePeriod', period)
+
+            if (sampleBufferSourceNode) {
+                sampleBufferSourceNode.disconnect()
+                //throw away
+            }
+
+            sampleBufferSourceNode = new AudioBufferSourceNode(audioContext)
+            sampleBufferSourceNode.buffer = sampleBuffer
+            sampleBufferSourceNode.loop = true
+            sampleBufferSourceNode.loopStart = 0 //Default, start from the beginning
+            sampleBufferSourceNode.loopEnd = period
+            sampleBufferSourceNode.connect(gainNode)
+            sampleBufferSourceNode.start()
+
+            this.isRunning = true
+            console.debug('Metronome::playClick::loop')
+        },
+
         /** Handles the tap buttons by starting and stoping the recognition of tap-in sequences and handling the click intervals */
         tap(event: Event): void {
             let thisTap = performance.now()
-            this.playClick()
+
+            //stop looping an already running node
+            if (sampleBufferSourceNode) {
+                sampleBufferSourceNode.loop = false
+            }
+
             console.log('tap')
 
-            //Just in case, anything was running, cancel it
-            clearTimeout(metronomeIntervalId)
+            //calculate the last period (tap span)
+            let lastPeriod = (thisTap - this.lastTapTimeStamp) / 1000
 
-            //calculate the last tap span
-            let lastSpan = thisTap - this.lastTapTimeStamp
-            console.debug('lastSpan:', lastSpan)
-
-            //if the last span is reasonable for a tap-in squence, start the metronome with an updated interval
-            if (lastSpan < 2500) {
+            //if the last period is reasonable for a tap-in squence, start the metronome with an updated interval
+            if (lastPeriod < this.getMaxTapPeriod) {
                 //start a new tap-in sequence, if there is none
-                if (this.sequnceTapCount === 0) {
+                var isNewSequence = this.sequnceTapCount === 0
+                if (isNewSequence) {
                     console.debug('NEW Sequence!')
                     this.firstTapOfSequenceTimeStamp = this.lastTapTimeStamp
                 }
                 this.sequnceTapCount++
 
-                //Process the tap-in sequence
-                // console.log('Tap-In detected', {
-                //     firstTapOfSequenceTimeStamp:
-                //         this.firstTapOfSequenceTimeStamp,
-                //     thisTap: thisTap,
-                //     sequnceTapCount: this.sequnceTapCount,
-                // });
-                var averageSpan =
+                //Get the average tap period in seconds, and use it as new BPM setting
+                var averagePeriod =
                     (thisTap - this.firstTapOfSequenceTimeStamp) /
-                    this.sequnceTapCount
+                    this.sequnceTapCount /
+                    1000
 
-                this.isRunning = true
-                metronomeIntervalId = setInterval(this.playClick, averageSpan)
-                this.beatsPerMinute = 60 / (averageSpan / 1000)
+                this.beatsPerMinute = 60 / averagePeriod
+
+                if (isNewSequence) {
+                    //immediately start with the inferred period
+                    this.updatePeriod(averagePeriod)
+                } else {
+                    //let the current click play out, then start with the loop again
+                    setTimeout(() => {
+                        this.updatePeriod(averagePeriod)
+                    }, averagePeriod * 1000)
+                }
             } else {
                 //do not continue with the sequence for now
                 this.isRunning = false
                 console.debug('sequence timeout')
                 this.firstTapOfSequenceTimeStamp = 0
                 this.sequnceTapCount = 0
+
+                //TODO detect, whether a click is due soon, then not play again (prevent double cklic).
+                //BEWARE: First check, whether this line is actually the problematic one
+                this.playClickOnce()
             }
 
             this.lastTapTimeStamp = thisTap
         },
         /** Handles the run button by (re-)starting the metronome with the current BPM */
         run(): void {
-            //Just in case, anything was running, cancel it
-            clearTimeout(metronomeIntervalId)
-            this.isRunning = true
-            var interval = (60 / this.beatsPerMinute) * 1000
-            metronomeIntervalId = setInterval(this.playClick, interval)
-
-            this.playClick()
+            var period = 60 / this.beatsPerMinute
+            this.updatePeriod(period)
             console.log('run')
         },
-        /** Plays the click sound once
-         * @remarks Also initializes the audio context.
+        /** Inizializes the Audio Context
          * @devdoc Initializing the audio context and playing a sample is only allowed after the first user interaction
          */
-        playClick(): void {
-            console.debug('Metronome::playClick')
-            this.click = true
-
-            //Create the audio context (must be called after the first user interaction to avoid exception)
+        initializeAudio(): void {
             if (!audioContext) {
                 console.log('creating new AudioContext')
                 audioContext = new AudioContext()
+
+                //Wire the processing chain up
+                gainNode = audioContext.createGain()
+                gainNode.connect(audioContext.destination)
 
                 //Prepare the sound source
                 console.debug('Special buffer sound')
@@ -307,41 +346,33 @@ export default defineComponent({
                 audioContext.decodeAudioData(
                     byteArray,
                     function (buffer) {
-                        bufferSource = audioContext.createBufferSource() // creates a sound source
-                        bufferSource.buffer = buffer
-                        bufferSource.connect(gainNode) // connect the source to the destination
-                        bufferSource.start()
+                        //This decoded buffer will be later used to actually play the sample, using the sampleBufferSourceNode, which is created only when actual playing is needed
+                        sampleBuffer = buffer
                     },
                     function (err) {
                         console.log('err(decodeAudioData): ' + err)
                     },
                 )
-
-                // var buffer = await audioContext.decodeAudioData(byteArray)
-                // var bufferSource = audioContext.createBufferSource()
-                // bufferSource.buffer = buffer;
-
-                //Wire the chain up
-                gainNode = audioContext.createGain()
-                gainNode.connect(audioContext.destination)
             }
-            //TODO continue here....
-            //TODO try to initialize the sound api as much as possible at startup, at least loading the sound
-            //TODO use Lighthouse to assess the performance implications of loading loading from base64
-            //TODO this does not work the first time, should start in async success method above
-            //TODO use this as the single, looped call upon changing the BPM, start the run
-            if (bufferSource) {
-                bufferSource.loop = true
-                bufferSource.loopStart = 0 //Default, start from the beginning
-                bufferSource.loopEnd = 0.5
-                bufferSource.start()
-            }
+        },
+        /** Plays the click sound once
+         * @devdoc Initializing the audio context and playing a sample is only allowed after the first user interaction
+         */
+        playClickOnce(): void {
+            console.debug('Metronome::playClickOnce')
+            this.click = true
+
+            sampleBufferSourceNode = new AudioBufferSourceNode(audioContext)
+            sampleBufferSourceNode.buffer = sampleBuffer
+            sampleBufferSourceNode.connect(gainNode)
+            sampleBufferSourceNode.start()
 
             //TODO later provide an additional visual click cue
         },
     },
     created() {
         console.log('Metronome::created')
+        this.initializeAudio()
     },
     unmounted() {
         console.log('Metronome::unmounted')
@@ -350,6 +381,12 @@ export default defineComponent({
                 console.log('AudioContext closed')
             })
         }
+    },
+    computed: {
+        /** Returns the maximum expected tap-in period in seconds, according to the minimum set BPM value */
+        getMaxTapPeriod(): number {
+            return 60 / this.bpmMin
+        },
     },
 })
 </script>

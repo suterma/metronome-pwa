@@ -6,6 +6,11 @@
                 metronome
             </a>
 
+            <div class="navbar">
+                <div class="navbar-item">
+                    <SelectBpm />
+                </div>
+            </div>
             <div class="navbar-end">
                 <div class="navbar-item">
                     <About />
@@ -22,17 +27,19 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
-import Metronome from './components/Metronome.vue';
-import About from './components/About.vue';
+import { defineComponent } from 'vue'
+import Metronome from './components/Metronome.vue'
+import About from './components/About.vue'
+import SelectBpm from './components/SelectBpm.vue'
 
 export default defineComponent({
     name: 'App',
     components: {
         Metronome,
         About,
+        SelectBpm,
     },
-});
+})
 </script>
 
 <style>
