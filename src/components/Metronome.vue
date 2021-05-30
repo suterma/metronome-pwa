@@ -8,7 +8,7 @@
             <div class="field is-grouped">
                 <p class="control is-expanded">
                     <button
-                        class="button is-info is-large is-outlined block"
+                        class="button is-danger is-large block"
                         @mousedown="changeBpm(-1)"
                         @keydown="changeBpm(-1)"
                     >
@@ -21,14 +21,14 @@
                     <span
                         class="
                             input
-                            is-display is-info is-large is-readonly is-static
+                            is-display is-danger is-large is-readonly is-static
                         "
                         >{{ beatsPerMinute }}</span
                     >
                 </p>
                 <p class="control is-expanded">
                     <button
-                        class="button is-info is-large is-outlined block"
+                        class="button is-danger is-large block"
                         @mousedown="changeBpm(1)"
                         @keydown="changeBpm(1)"
                     >
@@ -48,7 +48,7 @@
             <div class="field">
                 <div class="control">
                     <input
-                        class="input is-info is-large"
+                        class="input is-danger is-large"
                         type="number"
                         id="bpmTextbox"
                         v-model.number="beatsPerMinute"
@@ -80,10 +80,6 @@
             </div>
         </div>
     </div>
-    <!-- The running indicator -->
-    <div :class="isRunning ? 'notification is-link' : 'notification'">
-        <span v-show="isRunning"> Running </span>&nbsp;
-    </div>
 
     <!-- <div class="columns">
         <div class="column is-full">
@@ -103,7 +99,7 @@
             <div class="field">
                 <div class="control">
                     <Fader
-                        classNames="input is-link is-large is-info"
+                        classNames="input is-info is-large is-info"
                         type="range"
                         id="volume"
                         :min="0"
@@ -115,10 +111,30 @@
             </div>
         </div>
     </div>
+
+    <!-- The running indicator -->
+    <progress
+        v-show="!isRunning"
+        class="progress is-success"
+        max="100"
+        value="0"
+    >
+        .
+    </progress>
+    <progress
+        v-show="isRunning"
+        class="progress is-success"
+        max="100"
+        value="100"
+    >
+        Running
+    </progress>
+
+    <!-- Run and tap controls -->
     <div class="columns">
         <div class="column is-half">
             <button
-                class="button is-info is-large is-outlined block"
+                class="button is-danger is-large block"
                 @mousedown="run"
                 @keydown="run"
             >
@@ -127,11 +143,7 @@
         </div>
         <div class="column is-half">
             <button
-                class="
-                    button
-                    is-primary is-large is-double-height is-outlined
-                    block
-                "
+                class="button is-primary is-large is-double-height block"
                 @mousedown="tap"
                 @keydown="tap"
             >
