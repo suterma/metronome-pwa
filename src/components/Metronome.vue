@@ -99,7 +99,7 @@
             <div class="field">
                 <div class="control">
                     <Fader
-                        classNames="input is-info is-large is-info"
+                        classNames="input is-info is-large "
                         type="range"
                         id="volume"
                         :min="0"
@@ -150,6 +150,68 @@
                 Tap/Stop
             </button>
         </div>
+    </div>
+
+    //TODO test
+    <div class="control">
+        none
+        <Fader
+            classNames="input  is-large "
+            type="range"
+            id="volume"
+            :min="0"
+            :max="2"
+            :step="0.01"
+            v-model.number="volume"
+        />
+    </div>
+    is-primary
+    <div class="control">
+        <Fader
+            classNames="input is-primary is-large "
+            type="range"
+            id="volume"
+            :min="0"
+            :max="2"
+            :step="0.01"
+            v-model.number="volume"
+        />
+    </div>
+    is-secondary
+    <div class="control">
+        <Fader
+            classNames="input is-secondary is-large "
+            type="range"
+            id="volume"
+            :min="0"
+            :max="2"
+            :step="0.01"
+            v-model.number="volume"
+        />
+    </div>
+    is-warning
+    <div class="control">
+        <Fader
+            classNames="input is-warning is-large "
+            type="range"
+            id="volume"
+            :min="0"
+            :max="2"
+            :step="0.01"
+            v-model.number="volume"
+        />
+    </div>
+    is-info
+    <div class="control">
+        <Fader
+            classNames="input is-info is-large "
+            type="range"
+            id="volume"
+            :min="0"
+            :max="2"
+            :step="0.01"
+            v-model.number="volume"
+        />
     </div>
 </template>
 

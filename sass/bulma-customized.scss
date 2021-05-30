@@ -1,0 +1,31 @@
+@charset "utf-8";
+
+//TODO cleanup
+// Import a Google Font
+//@import url('https://fonts.googleapis.com/css?family=Nunito:400,700');
+
+//Modal background color is kept dark
+//$modal-background-background-color: rgba($grey-lighter, 0.86);
+
+// Don't use special layout on very large screens
+$widescreen-enabled: false;
+$fullhd-enabled: false;
+
+// Update some of Bulma's component variables
+// $control-border-width: 2px;
+// $input-shadow: none;
+
+@import '../node_modules/bulmaswatch/nuclear/_variables.scss';
+@import '../node_modules/bulma/bulma.sass';
+@import '../node_modules/bulmaswatch/nuclear/_overrides.scss';
+
+// //TODO Import only what you need from Bulma
+// @import '../node_modules/bulma/sass/utilities/_all.sass';
+// @import '../node_modules/bulma/sass/base/_all.sass';
+// @import '../node_modules/bulma/sass/elements/button.sass';
+// @import '../node_modules/bulma/sass/elements/container.sass';
+// @import '../node_modules/bulma/sass/elements/title.sass';
+// @import '../node_modules/bulma/sass/form/_all.sass';
+// @import '../node_modules/bulma/sass/components/navbar.sass';
+// @import '../node_modules/bulma/sass/layout/hero.sass';
+// @import '../node_modules/bulma/sass/layout/section.sass';
