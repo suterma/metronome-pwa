@@ -45,6 +45,16 @@
                         </li>
                         <li>
                             <a
+                                href="https://jenil.github.io/bulmaswatch/nuclear/"
+                                >Bulmaswatch Nuclear Theme</a
+                            >
+                            © Jenil Gogari. Licensed under the
+                            <a href="https://opensource.org/licenses/MIT"
+                                >MIT License</a
+                            >
+                        </li>
+                        <li>
+                            <a
                                 href="https://freesound.org/people/PrimeJunt/sounds/135627/#"
                                 >Drum stick sample</a
                             >
