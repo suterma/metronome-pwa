@@ -156,7 +156,7 @@
     <div class="control">
         none
         <Fader
-            classNames="input  is-large "
+            classNames="input slider is-large "
             type="range"
             id="volume"
             :min="0"
@@ -168,7 +168,7 @@
     is-primary
     <div class="control">
         <Fader
-            classNames="input is-primary is-large "
+            classNames="input slider is-primary is-large "
             type="range"
             id="volume"
             :min="0"
@@ -177,10 +177,10 @@
             v-model.number="volume"
         />
     </div>
-    is-secondary
+    is-link
     <div class="control">
         <Fader
-            classNames="input is-secondary is-large "
+            classNames="input slider is-link is-large "
             type="range"
             id="volume"
             :min="0"
@@ -192,7 +192,7 @@
     is-warning
     <div class="control">
         <Fader
-            classNames="input is-warning is-large "
+            classNames="input slider is-warning is-large "
             type="range"
             id="volume"
             :min="0"
@@ -204,7 +204,7 @@
     is-info
     <div class="control">
         <Fader
-            classNames="input is-info is-large "
+            classNames="input slider is-info is-large"
             type="range"
             id="volume"
             :min="0"
