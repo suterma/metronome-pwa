@@ -3429,7 +3429,7 @@ button.dropdown-item {
     display: flex; }
 
 .modal-background {
-  background-color: rgba(255, 255, 255, 0.86); }
+  background-color: rgba(44, 44, 44, 0.86); }
 
 .modal-content,
 .modal-card {
@@ -7557,41 +7557,48 @@ input[type="submit"].button {
   .textarea:focus.is-danger {
     box-shadow: 0 0 7px 0 #f90000; }
 
-/* //TODO Trying to have custom styling for the slider
-  - bulma-extensions seem not to work
-  - much sass also seems not to work
- */
+/** These are specific bulma styles for the button component
+* @remarks These styles are currently only written to work for is-large controls.*/
+/* A Button of double height */
+.is-large.is-tall.button {
+  height: 5em; }
+
+/** These are specific bulma styles for the slider component
+* @remarks These styles are currently only written to work for is-large controls.
+* @remarks The outlined modifier is not supported
+* @devdoc These styles are a combination of bulma styles and the information taken
+* from https://css-tricks.com/styling-cross-browser-compatible-range-inputs-css/
+* The bulma-extensions npm module did unfortunately not work for me
+* Also the &-Operator used in the bulmaswatch theme did not work for me
+* Thus, the SCSS is rather verbose and not using any advanced functionality
+*/
+/* Common styles for all variants*/
 input[type='range'].slider {
-  /* no surrounding box*/
   color: #131313;
-  border: none; }
+  border: none;
+  padding-left: 0;
+  padding-right: 0; }
 
 /* The default box shadow for focused sliders is the text color*/
 input[type='range'].slider:focus,
 input[type='range'].slider.is-focused {
   box-shadow: 0 0 7px 1px #bebebe; }
 
+/**
+* Styling of the track and thumb, specifically for WebKit/Blink-based browsers (e.g. Google Chrome, Chromium, Microsoft Edge)
+*/
 input[type='range'].slider::-webkit-slider-runnable-track {
-  /* common styles */
   border: 1px solid #131313;
   border-radius: 4px;
   background-color: #2c2c2c;
-  height: 0.5em;
-  color: yellow; }
+  height: 0.5em; }
 
-input[type='range'].slider::-moz-range-track {
-  /* common styles */ }
-
-input[type='range'].slider::-ms-track {
-  /* common styles */ }
-
-/* Special styling for WebKit/Blink */
 input[type='range'].slider::-webkit-slider-thumb {
   -webkit-appearance: none;
   border-radius: 4px;
   padding-top: calc(0.375em + 1px);
   border-width: 0;
-  height: 2.5em;
+  height: calc(2.5em - 2px);
   width: 1.25em;
   cursor: pointer;
   margin-top: calc( -1em);
@@ -7713,5 +7720,138 @@ input[type='range'].slider:active::-webkit-slider-thumb {
   border-color: rgba(0, 0, 0, 0.47);
   box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.7) inset, 0 1px 15px 0 rgba(0, 0, 0, 0.9) inset; }
 
-/* All the same stuff for Firefox */
-/* All the same stuff for IE */
+/**
+* Styling of the track and thumb, specifically for Mozilla/Gecko-based browsers (e.g. Firefox)
+*/
+input[type='range'].slider::-moz-range-track {
+  border: 1px solid #131313;
+  border-radius: 4px;
+  background-color: #2c2c2c;
+  height: 0.5em; }
+
+input[type='range'].slider::-moz-range-thumb {
+  -webkit-appearance: none;
+  border-radius: 4px;
+  padding-top: calc(0.375em + 1px);
+  border-width: 0;
+  height: calc(2.5em - 2px);
+  width: 1.25em;
+  cursor: pointer;
+  margin-top: calc( -1em);
+  /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
+  transition: box-shadow 0.1s linear;
+  background: #bebebe;
+  /* use uncolored as the slider default, not the typical button outlined style*/
+  box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.3) inset, 0 1px 15px 0 rgba(0, 0, 0, 0.6) inset; }
+
+/*Thumb color variants*/
+input[type='range'].slider.is-primary::-moz-range-thumb {
+  background: #d9ff00; }
+
+input[type='range'].slider.is-info::-moz-range-thumb {
+  background: #3298dc; }
+
+input[type='range'].slider.is-success::-moz-range-thumb {
+  background: #00ff48; }
+
+input[type='range'].slider.is-warning::-moz-range-thumb {
+  background: #ffaa00; }
+
+input[type='range'].slider.is-danger::-moz-range-thumb {
+  background: #f90000; }
+
+input[type='range'].slider.is-link::-moz-range-thumb {
+  background: #00ffff; }
+
+/* Hover color variants*/
+input[type='range'].slider.is-hovered::-moz-range-thumb,
+input[type='range'].slider:hover::-moz-range-thumb {
+  border-color: rgba(0, 0, 0, 0.25);
+  transition: box-shadow 0.1s linear;
+  box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.3) inset, 0 1px 15px 0 rgba(0, 0, 0, 0.6) inset, 0 0 3px 0 #bebebe; }
+
+input[type='range'].slider.is-primary.is-hovered::-moz-range-thumb,
+input[type='range'].slider.is-primary:hover::-moz-range-thumb {
+  border-color: rgba(0, 0, 0, 0.25);
+  transition: box-shadow 0.1s linear;
+  box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.3) inset, 0 1px 15px 0 rgba(0, 0, 0, 0.6) inset, 0 0 3px 0 #d9ff00; }
+
+input[type='range'].slider.is-info.is-hovered::-moz-range-thumb,
+input[type='range'].slider.is-info:hover::-moz-range-thumb {
+  border-color: rgba(0, 0, 0, 0.25);
+  transition: box-shadow 0.1s linear;
+  box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.3) inset, 0 1px 15px 0 rgba(0, 0, 0, 0.6) inset, 0 0 3px 0 #3298dc; }
+
+input[type='range'].slider.is-success.is-hovered::-moz-range-thumb,
+input[type='range'].slider.is-success:hover::-moz-range-thumb {
+  border-color: rgba(0, 0, 0, 0.25);
+  transition: box-shadow 0.1s linear;
+  box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.3) inset, 0 1px 15px 0 rgba(0, 0, 0, 0.6) inset, 0 0 3px 0 #00ff48; }
+
+input[type='range'].slider.is-warning.is-hovered::-moz-range-thumb,
+input[type='range'].slider.is-warning:hover::-moz-range-thumb {
+  border-color: rgba(0, 0, 0, 0.25);
+  transition: box-shadow 0.1s linear;
+  box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.3) inset, 0 1px 15px 0 rgba(0, 0, 0, 0.6) inset, 0 0 3px 0 #ffaa00; }
+
+input[type='range'].slider.is-danger.is-hovered::-moz-range-thumb,
+input[type='range'].slider.is-danger:hover::-moz-range-thumb {
+  border-color: rgba(0, 0, 0, 0.25);
+  transition: box-shadow 0.1s linear;
+  box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.3) inset, 0 1px 15px 0 rgba(0, 0, 0, 0.6) inset, 0 0 3px 0 #f90000; }
+
+input[type='range'].slider.is-link.is-hovered::-moz-range-thumb,
+input[type='range'].slider.is-link:hover::-moz-range-thumb {
+  border-color: rgba(0, 0, 0, 0.25);
+  transition: box-shadow 0.1s linear;
+  box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.3) inset, 0 1px 15px 0 rgba(0, 0, 0, 0.6) inset, 0 0 3px 0 #00ffff; }
+
+/*Thumb focus color variants*/
+input[type='range'].slider.is-focused::-moz-range-thumb,
+input[type='range'].slider:focus::-moz-range-thumb {
+  transition: box-shadow 0.1s linear;
+  border-color: #bebebe;
+  box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.2) inset, 0 0 0 0 rgba(0, 0, 0, 0.5) inset, 0 0 7px 1px #bebebe; }
+
+input[type='range'].slider.is-info.is-focused::-moz-range-thumb,
+input[type='range'].slider.is-info:focus::-moz-range-thumb {
+  transition: box-shadow 0.1s linear;
+  border-color: #3298dc;
+  box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.2) inset, 0 0 0 0 rgba(0, 0, 0, 0.5) inset, 0 0 7px 1px #3298dc; }
+
+input[type='range'].slider.is-primary.is-focused::-moz-range-thumb,
+input[type='range'].slider.is-primary:focus::-moz-range-thumb {
+  transition: box-shadow 0.1s linear;
+  border-color: #d9ff00;
+  box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.2) inset, 0 0 0 0 rgba(0, 0, 0, 0.5) inset, 0 0 7px 1px #d9ff00; }
+
+input[type='range'].slider.is-success.is-focused::-moz-range-thumb,
+input[type='range'].slider.is-success:focus::-moz-range-thumb {
+  transition: box-shadow 0.1s linear;
+  border-color: #00ff48;
+  box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.2) inset, 0 0 0 0 rgba(0, 0, 0, 0.5) inset, 0 0 7px 1px #00ff48; }
+
+input[type='range'].slider.is-warning.is-focused::-moz-range-thumb,
+input[type='range'].slider.is-warning:focus::-moz-range-thumb {
+  transition: box-shadow 0.1s linear;
+  border-color: #ffaa00;
+  box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.2) inset, 0 0 0 0 rgba(0, 0, 0, 0.5) inset, 0 0 7px 1px #ffaa00; }
+
+input[type='range'].slider.is-danger.is-focused::-moz-range-thumb,
+input[type='range'].slider.is-danger:focus::-moz-range-thumb {
+  transition: box-shadow 0.1s linear;
+  border-color: #f90000;
+  box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.2) inset, 0 0 0 0 rgba(0, 0, 0, 0.5) inset, 0 0 7px 1px #f90000; }
+
+input[type='range'].slider.is-link.is-focused::-moz-range-thumb,
+input[type='range'].slider.is-link:focus::-moz-range-thumb {
+  transition: box-shadow 0.1s linear;
+  border-color: #00ffff;
+  box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.2) inset, 0 0 0 0 rgba(0, 0, 0, 0.5) inset, 0 0 7px 1px #00ffff; }
+
+/* Active (color-independent) */
+input[type='range'].slider.is-active::-moz-range-thumb,
+input[type='range'].slider:active::-moz-range-thumb {
+  transition: box-shadow 0.1s linear;
+  border-color: rgba(0, 0, 0, 0.47);
+  box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.7) inset, 0 1px 15px 0 rgba(0, 0, 0, 0.9) inset; }

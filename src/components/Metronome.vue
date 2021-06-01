@@ -67,7 +67,7 @@
             <div class="field">
                 <div class="control">
                     <Fader
-                        classNames="input is-info is-large"
+                        classNames="input slider is-danger is-large"
                         type="range"
                         id="bpmFader"
                         :min="35"
@@ -99,7 +99,7 @@
             <div class="field">
                 <div class="control">
                     <Fader
-                        classNames="input is-info is-large "
+                        classNames="input slider is-large "
                         type="range"
                         id="volume"
                         :min="0"
@@ -143,75 +143,13 @@
         </div>
         <div class="column is-half">
             <button
-                class="button is-primary is-large is-double-height block"
+                class="button is-primary is-large is-tall block"
                 @mousedown="tap"
                 @keydown="tap"
             >
                 Tap/Stop
             </button>
         </div>
-    </div>
-
-    //TODO test
-    <div class="control">
-        none
-        <Fader
-            classNames="input slider is-large "
-            type="range"
-            id="volume"
-            :min="0"
-            :max="2"
-            :step="0.01"
-            v-model.number="volume"
-        />
-    </div>
-    is-primary
-    <div class="control">
-        <Fader
-            classNames="input slider is-primary is-large "
-            type="range"
-            id="volume"
-            :min="0"
-            :max="2"
-            :step="0.01"
-            v-model.number="volume"
-        />
-    </div>
-    is-link
-    <div class="control">
-        <Fader
-            classNames="input slider is-link is-large "
-            type="range"
-            id="volume"
-            :min="0"
-            :max="2"
-            :step="0.01"
-            v-model.number="volume"
-        />
-    </div>
-    is-warning
-    <div class="control">
-        <Fader
-            classNames="input slider is-warning is-large "
-            type="range"
-            id="volume"
-            :min="0"
-            :max="2"
-            :step="0.01"
-            v-model.number="volume"
-        />
-    </div>
-    is-info
-    <div class="control">
-        <Fader
-            classNames="input slider is-info is-large"
-            type="range"
-            id="volume"
-            :min="0"
-            :max="2"
-            :step="0.01"
-            v-model.number="volume"
-        />
     </div>
 </template>
 
