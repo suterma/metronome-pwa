@@ -58,7 +58,7 @@
                                 href="https://freesound.org/people/PrimeJunt/sounds/135627/#"
                                 >Drum stick sample</a
                             >
-                            © PrimeJunt, minified. Licensed under
+                            © PrimeJunt, edited. Licensed under
                             <a
                                 href="https://creativecommons.org/licenses/by/3.0/"
                                 >Creative Commons Attribution 3.0 Unported (CC
