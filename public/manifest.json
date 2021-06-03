@@ -1,6 +1,6 @@
 {
     "name": "tic: a simple online metronome",
-    "short_name": "tic",
+    "short_name": "tic (metronome)",
     "lang": "en-US",
     "description": "tic is a web app that uses the modern Audio API to create an metronome in the browser.",
     "theme_color": "#ffdb0f",

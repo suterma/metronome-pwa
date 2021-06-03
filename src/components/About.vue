@@ -4,19 +4,11 @@
     <div :class="isActive ? 'modal is-active' : 'modal'">
         <div class="modal-background" @click="hide"></div>
         <div class="modal-card">
-            <!-- <header class="modal-card-head">
-                <p class="modal-card-title">About</p>
-                <button
-                    class="delete is-large"
-                    aria-label="close"
-                    @click="hide"
-                ></button>
-            </header> -->
             <section class="modal-card-body">
                 <div class="content">
                     <h1 class="title">About</h1>
                     <p>
-                        <a href="https://metronome.replayer.ch">Metronome</a>
+                        <a href="https://tic.replayer.ch">(tic) metronome</a>
                         (c) by
                         <a href="https://marcelsuter.ch">Marcel Suter</a>.
                         Licensed under the

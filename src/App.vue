@@ -3,17 +3,12 @@
     <nav class="navbar" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
             <a class="navbar-item" href="https://tic.replayer.ch">
-                metronome
+                <img src="./assets/logo.png" height="28" />
             </a>
 
-            <!-- //TOOD later use vue-router and vuex store for the bpm value -->
-            <!-- <div class="navbar">
-                <div class="navbar-item">
-                    <SelectBpm />
-                </div>
-            </div> -->
-            <div class="navbar-end">
-                <div class="navbar-item">
+            <!-- For this app, no closeable menu is used, buth all option are always displayed -->
+            <div id="navbarApp" class="navbar-menu is-active">
+                <div class="navbar-end">
                     <About />
                 </div>
             </div>
@@ -47,5 +42,10 @@ export default defineComponent({
 #app {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+}
+
+/** Use only little vertical padding, to better use the available space */
+#app section.section {
+    padding-top: 1em;
 }
 </style>
