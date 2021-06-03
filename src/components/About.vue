@@ -8,7 +8,7 @@
                 <div class="content">
                     <h1 class="title">About</h1>
                     <p>
-                        <a href="https://tic.replayer.ch">(tic) metronome</a>
+                        <a href="https://tic.replayer.ch">tic (metronome)</a>
                         (c) by
                         <a href="https://marcelsuter.ch">Marcel Suter</a>.
                         Licensed under the
