@@ -160,6 +160,9 @@ import samples from './samples.json'
 import { decode } from 'base64-arraybuffer'
 import { setTimeout } from 'timers'
 
+/** A Wake Lock API polyfill, to avoid screen locks while running the metronome */
+import NoSleep from 'nosleep.js'
+
 //TODO this does not feel right, how to make this into the component?
 let audioContext: AudioContext
 let gainNode: GainNode
@@ -170,6 +173,8 @@ let sampleBuffer: AudioBuffer
  */
 let sampleBufferSourceNode: AudioBufferSourceNode
 let metronomeIntervalId: any
+
+let noSleep = new NoSleep()
 
 /** This is metronome component that allows setting or tapping in a Beats-Per-Minute speed
  * @remarks It allows to tap along the rythm for some beats to adjust the speed properly to the sound
@@ -216,6 +221,19 @@ export default defineComponent({
         volume(newVal, oldVal) {
             //console.debug('observed new volume', newVal);
             gainNode.gain.value = newVal
+        },
+        /** Watches for changes of the running state and triggers the Wake Lock feature
+         * @remarks The screen is prevented from sleep while the metronome is running to allow immediate control to the user.
+         * When not running sleep is not prevented, to enable power saves for assumed.
+         * @devdoc This currently uses a polyfill for the Wake Lock API (see https://github.com/richtr/NoSleep.js)
+         */
+        isRunning(newVal, oldVal) {
+            if (newVal === true /*running*/) {
+                noSleep.enable()
+            }
+            if (newVal === false) {
+                noSleep.disable()
+            }
         },
     },
     methods: {
@@ -336,7 +354,7 @@ export default defineComponent({
         /** Handles the run button by (re-)starting the metronome with the current BPM */
         run(): void {
             var period = 60 / this.beatsPerMinute
-            this.updatePeriod(period)
+            this.updatePeriod(period) //also sets the isRunning state to true
             console.log('run')
         },
         /** Inizializes the Audio Context

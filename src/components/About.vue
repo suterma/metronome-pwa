@@ -78,6 +78,16 @@
                                 >CC0 License</a
                             >
                         </li>
+                        <li>
+                            <a href="https://github.com/richtr/NoSleep.js"
+                                >NoSleep.js</a
+                            >
+                            a Wake Lock polyfill by Rich Tibbett. Licensed under
+                            the
+                            <a href="https://opensource.org/licenses/MIT"
+                                >MIT License</a
+                            >
+                        </li>
                     </ul>
                 </div>
             </section>
