@@ -32,6 +32,12 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 # Notes
 
+## Wake Lock API availablilty
+
+Currently, the [Screen Wake Lock API is not available on all browsers](https://caniuse.com/wake-lock). There is an an [abandoned, Non-standard, similar Wake Lock API by Mozilla](https://developer.mozilla.org/en-US/docs/Archive/B2G_OS/API/Wake_Lock_API), and the superseding [Screen Wake Lock API](https://developer.mozilla.org/en-US/docs/Web/API/Screen_Wake_Lock_API).
+
+In the hope to prevent screen locks, and while a better solution is available, the projects uses the [NoSleep.js "Hack" by Rich Tibbett](https://github.com/richtr/NoSleep.js).
+
 ## How to use Bulma in a Vue3 project (not using Buefy)
 
 For a Vue3 project created with the Vue CLI (With the CSS Pre-processors not selected), mainly follow the guide at https://bulma.io/documentation/customize/with-node-sass/ with a few changes:
