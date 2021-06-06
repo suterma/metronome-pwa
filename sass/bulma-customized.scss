@@ -1,5 +1,10 @@
 @charset "utf-8";
 
+/** These are specific bulma styles for the metronome app
+* @remarks This uses the 'nuclear' bulmaswatch theme 
+* and some specific customizations for this app
+*/
+
 // Don't use special layout on very large screens
 $widescreen-enabled: false;
 $fullhd-enabled: false;
