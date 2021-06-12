@@ -2,8 +2,8 @@
     "name": "tic: a simple online metronome",
     "short_name": "tic (metronome)",
     "lang": "en-US",
-    "description": "tic is a web app that uses the modern Audio API to create an metronome in the browser.",
-    "theme_color": "#ffdb0f",
+    "description": "tic is a progressive web app, using the Audio API to run a metronome in the browser",
+    "theme_color": "#f90000",
     "icons": [
         {
             "src": "./img/icons/android-chrome-192x192.png",
@@ -23,9 +23,9 @@
     "background_color": "#000000",
     "screenshots": [
         {
-            "src": "/img///TODO.png",
+            "src": "/img/screenshot.png",
             "type": "image/png",
-            "sizes": "543x487"
+            "sizes": "311x680"
         }
     ]
 }
