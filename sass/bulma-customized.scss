@@ -12,6 +12,7 @@ $fullhd-enabled: false;
 // Don't use the bulma "perpetual" scroll bar
 // See https://github.com/jgthms/bulma/issues/1293
 $body-overflow-y: auto;
+$body-overflow-x: auto;
 
 // Using the bulmaswatch nuclear theme
 @import '../node_modules/bulmaswatch/nuclear/_variables.scss';
