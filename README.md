@@ -1,34 +1,14 @@
 # metronome-pwa
 
-A simple metronome, as progressive web app
+A simple metronome, as progressive web app. Available at https://tic.replayer.ch
 
-## Project setup
+![tic (metronome) main screen](screenshot.png)
 
-```
-npm install
-```
+# Installation
 
-### Compiles and hot-reloads for development
+You can use it right from the [website](https://tic.replayer.ch), without any installation, or you can install it as a [Progressive web application](https://en.wikipedia.org/wiki/Progressive_web_application), for offline use within your browser. 
 
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-
-```
-npm run build
-```
-
-### Lints and fixes files
-
-```
-npm run lint
-```
-
-### Customize configuration
-
-See [Configuration Reference](https://cli.vuejs.org/config/).
+ - [Google Chrome](https://support.google.com/chrome/answer/9658361)
 
 # Notes
 
