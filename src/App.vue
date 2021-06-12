@@ -3,7 +3,8 @@
     <nav class="navbar" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
             <a class="navbar-item" href="https://tic.replayer.ch">
-                <img src="./assets/logo.png" height="28" />
+                <!-- HINT: Provide explicit height and widht as an optimization measure -->
+                <img src="./assets/logo.png" width="28" height="28" />
             </a>
 
             <!-- For this app, no closeable menu is used, buth all option are always displayed -->

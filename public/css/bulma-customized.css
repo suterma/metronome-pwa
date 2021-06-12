@@ -1,5 +1,5 @@
 /** These are specific bulma styles for the metronome app
-* @remarks This uses the 'nuclear' bulmaswatch theme 
+* @remarks This also uses the 'nuclear' bulmaswatch theme 
 * and some specific customizations for this app
 */
 /*! bulma.io v0.9.2 | MIT License | github.com/jgthms/bulma */
@@ -273,7 +273,7 @@ html {
   -webkit-font-smoothing: antialiased;
   min-width: 300px;
   overflow-x: hidden;
-  overflow-y: scroll;
+  overflow-y: auto;
   text-rendering: optimizeLegibility;
   text-size-adjust: 100%; }
 
