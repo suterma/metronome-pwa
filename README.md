@@ -2,7 +2,7 @@
 
 A simple metronome, as progressive web app. Available at https://tic.replayer.ch
 
-![tic (metronome) main screen](screenshot.png)
+![tic (metronome) main screen](/public/img/screenshot.png)
 
 # Installation
 
