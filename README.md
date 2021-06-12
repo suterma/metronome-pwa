@@ -2,6 +2,14 @@
 
 A simple metronome, as progressive web app. Available at https://tic.replayer.ch
 
+![tic (metronome) main screen](screenshot.png)
+
+# Installation
+
+You can use it right from the [website](https://tic.replayer.ch), without any installation, or you can install it as a [Progressive web application](https://en.wikipedia.org/wiki/Progressive_web_application), for offline use within your browser. 
+
+ - [Google Chrome](https://support.google.com/chrome/answer/9658361)
+
 # Notes
 
 ## Wake Lock API availablilty
