@@ -1,6 +1,6 @@
 # metronome-pwa
 
-A simple metronome, as progressive web app. Available at https://tic,replayer.ch
+A simple metronome, as progressive web app. Available at https://tic.replayer.ch
 
 # Notes
 
