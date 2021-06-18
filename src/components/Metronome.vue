@@ -16,16 +16,16 @@
                     </button>
                 </p>
 
-                <p class="control is-expanded">
-                    <!-- {{ beatsPerMinute }} -->
+                <p class="control is-expanded has-text-centered">
                     <span
                         class="
                             input
                             is-display is-danger is-large is-readonly is-static
                         "
-                        >{{ beatsPerMinute }}</span
+                        >{{ beatsPerMinuteDisplayText }}</span
                     >
                 </p>
+
                 <p class="control is-expanded">
                     <button
                         class="button is-danger is-large block"
@@ -80,15 +80,6 @@
             </div>
         </div>
     </div>
-
-    <!-- <div class="columns">
-        <div class="column is-full">
-            DEBUG: {{ sequnceTapCount }}{{ click }} BPM:{{
-                beatsPerMinute
-            }}
-            Running: {{ isRunning }} Volume: {{ volume }}
-        </div>
-    </div> -->
 
     <!-- The volume slider -->
     <div class="field is-horizontal">
@@ -417,6 +408,13 @@ export default defineComponent({
         /** Returns the maximum expected tap-in period in seconds, according to the minimum set BPM value */
         getMaxTapPeriod(): number {
             return 60 / this.bpmMin
+        },
+
+        beatsPerMinuteDisplayText(): string {
+            if (this.beatsPerMinute % 1 === 0) {
+                return this.beatsPerMinute.toFixed(0)
+            }
+            return this.beatsPerMinute.toFixed(2)
         },
     },
 })
