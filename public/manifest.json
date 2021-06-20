@@ -1,5 +1,5 @@
 {
-    "name": "tic: a simple online metronome",
+    "name": "tic: a simple metronome app",
     "short_name": "tic (metronome)",
     "lang": "en-US",
     "description": "tic is a progressive web app, using the Audio API to run a metronome in the browser",

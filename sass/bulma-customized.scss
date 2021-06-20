@@ -9,6 +9,9 @@
 $widescreen-enabled: false;
 $fullhd-enabled: false;
 
+// Bulma: Don't break break the menu even on small devices*/
+$navbar-breakpoint: 0;
+
 // Don't use the bulma "perpetual" scroll bar
 // See https://github.com/jgthms/bulma/issues/1293
 $body-overflow-y: auto;

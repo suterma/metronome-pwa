@@ -154,16 +154,16 @@ import { setTimeout } from 'timers'
 /** A Wake Lock API polyfill, to avoid screen locks while running the metronome */
 import NoSleep from 'nosleep.js'
 
-//TODO this does not feel right, how to make this into the component?
 let audioContext: AudioContext
 let gainNode: GainNode
+
 /** The loaded sample data, ready to be used with an AudioBufferSourceNode */
 let sampleBuffer: AudioBuffer
+
 /** The playable buffer source node, that emits the click sound
  * @remarks Defined here, because it is to be used only once at a time, and stopped/recreated as needed
  */
 let sampleBufferSourceNode: AudioBufferSourceNode
-let metronomeIntervalId: any
 
 let noSleep = new NoSleep()
 
@@ -209,16 +209,16 @@ export default defineComponent({
         /** Watches for changes on the volume and immediately applies them
          * @remarks using the change event on the input control does only trigger the function call upon mouse up
          */
-        volume(newVal, oldVal) {
-            //console.debug('observed new volume', newVal);
+        volume(newVal) {
             gainNode.gain.value = newVal
         },
+
         /** Watches for changes of the running state and triggers the Wake Lock feature
-         * @remarks The screen is prevented from sleep while the metronome is running to allow immediate control to the user.
-         * When not running sleep is not prevented, to enable power saves for assumed.
+         * @remarks The screen is prevented from sleep while the metronome is running not disturb the audio and to keep the GUI accessible.
+         * When not running sleep is not prevented, to enable default power saving behauviour.
          * @devdoc This currently uses a polyfill for the Wake Lock API (see https://github.com/richtr/NoSleep.js)
          */
-        isRunning(newVal, oldVal) {
+        isRunning(newVal) {
             if (newVal === true /*running*/) {
                 noSleep.enable()
             }
@@ -232,7 +232,7 @@ export default defineComponent({
          * @devdoc This intentionally handles the slider change, and does not watch the BPM value
          * to only handle the slider change
          */
-        updateBpm(event: Event): void {
+        updateBpm(/*event: Event*/): void {
             console.debug('Metronome::updateBpm', this.beatsPerMinute)
             if (this.isRunning) {
                 //Start again with updated BPM
@@ -287,7 +287,7 @@ export default defineComponent({
         },
 
         /** Handles the tap buttons by starting and stoping the recognition of tap-in sequences and handling the click intervals */
-        tap(event: Event): void {
+        tap(/*event: Event*/): void {
             let thisTap = performance.now()
 
             //stop looping an already running node
@@ -392,15 +392,15 @@ export default defineComponent({
             //TODO later provide an additional visual click cue
         },
     },
-    created() {
-        console.log('Metronome::created')
+    mounted() {
+        console.debug('Metronome::mounted')
         this.initializeAudio()
     },
     unmounted() {
-        console.log('Metronome::unmounted')
+        console.debug('Metronome::unmounted')
         if (audioContext && audioContext.state !== 'closed') {
             audioContext.close().then(function () {
-                console.log('AudioContext closed')
+                console.debug('AudioContext closed')
             })
         }
     },
