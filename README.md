@@ -12,6 +12,20 @@ You can use it right from the [website](https://tic.replayer.ch), without any in
 
 # Notes
 
+## Setp
+
+This PWA was created with the minimal guide from [How to create a new PWA-enabled VueJs app on Ubuntu 20.04 from scratch](https://qrys.ch/how-to-create-a-new-pwa-enabled-vuejs-app-on-ubuntu-20-04/), using the following options:
+
+- Vue 3 (with class-style, seems now properly supported with Vue3)
+- Babel
+- Typescript
+- PWA
+- Router (no history mode)
+- Vuex
+- CSS Preprocessors (Sass/SCSS (with node-sass))
+- Linter / Formatter (ESLint + Prettier, Lint on save)
+- dedicated config files
+
 ## Wake Lock API availablilty
 
 Currently, the [Screen Wake Lock API is not available on all browsers](https://caniuse.com/wake-lock). There is an an [abandoned, Non-standard, similar Wake Lock API by Mozilla](https://developer.mozilla.org/en-US/docs/Archive/B2G_OS/API/Wake_Lock_API), and the superseding [Screen Wake Lock API](https://developer.mozilla.org/en-US/docs/Web/API/Screen_Wake_Lock_API).
