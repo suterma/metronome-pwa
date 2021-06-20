@@ -6,9 +6,10 @@ A simple metronome, as progressive web app. Available at https://tic.replayer.ch
 
 # Installation
 
-You can use it right from the [website](https://tic.replayer.ch), without any installation, or you can install it as a [Progressive web application](https://en.wikipedia.org/wiki/Progressive_web_application), for offline use within your browser. 
+You can use it right from the [website](https://tic.replayer.ch), without any installation. While visiting, you can install it as a [Progressive web application](https://en.wikipedia.org/wiki/Progressive_web_application), for offline use within your browser:
 
- - [Google Chrome](https://support.google.com/chrome/answer/9658361)
+-   [Google Chrome](https://support.google.com/chrome/answer/9658361)
+-   [Firefox](https://www.thurrott.com/cloud/web-browsers/mozilla-firefox/246716/firefox-85-is-here-but-mozilla-is-killing-pwa-features), only partially supported
 
 # Notes
 
@@ -16,15 +17,15 @@ You can use it right from the [website](https://tic.replayer.ch), without any in
 
 This PWA was created with the minimal guide from [How to create a new PWA-enabled VueJs app on Ubuntu 20.04 from scratch](https://qrys.ch/how-to-create-a-new-pwa-enabled-vuejs-app-on-ubuntu-20-04/), using the following options:
 
-- Vue 3 (no class-style, eventuelly I might use the new composition API)
-- Babel
-- Typescript
-- PWA
-- Router (no history mode)
-- Vuex
-- CSS Preprocessors (Sass/SCSS (with dart-sass))
-- Linter / Formatter (ESLint + Prettier, Lint on save)
-- dedicated config files
+-   Vue 3 (no class-style, eventuelly I might use the new composition API)
+-   Babel
+-   Typescript
+-   PWA
+-   Router (no history mode)
+-   Vuex
+-   CSS Preprocessors (Sass/SCSS (with dart-sass))
+-   Linter / Formatter (ESLint + Prettier, Lint on save)
+-   dedicated config files
 
 ## Wake Lock API availablilty
 
