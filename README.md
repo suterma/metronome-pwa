@@ -16,7 +16,7 @@ You can use it right from the [website](https://tic.replayer.ch), without any in
 
 This PWA was created with the minimal guide from [How to create a new PWA-enabled VueJs app on Ubuntu 20.04 from scratch](https://qrys.ch/how-to-create-a-new-pwa-enabled-vuejs-app-on-ubuntu-20-04/), using the following options:
 
-- Vue 3 (with class-style, seems now properly supported with Vue3)
+- Vue 3 (no class-style, eventuelly I might use the new composition API)
 - Babel
 - Typescript
 - PWA
