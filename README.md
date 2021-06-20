@@ -25,7 +25,7 @@ This PWA was created with the minimal guide from [How to create a new PWA-enable
 -   PWA
 -   Router (no history mode)
 -   Vuex
--   CSS Preprocessors (Sass/SCSS (with dart-sass))
+-   CSS Preprocessors (Sass/SCSS (with node-sass))
 -   Linter / Formatter (ESLint + Prettier, Lint on save)
 -   dedicated config files
 
@@ -37,7 +37,7 @@ In the hope to prevent screen locks, and while a better solution is available, t
 
 ## How to use Bulma in a Vue3 project (not using Buefy)
 
-For a Vue3 project created with the Vue CLI (With the CSS Pre-processors not selected), mainly follow the guide at https://bulma.io/documentation/customize/with-node-sass/ with a few changes:
+For a Vue3 project created with the Vue CLI (With the CSS Pre-processors not selected), mainly follow the guide at https://bulma.io/documentation/customize/with-node-sass/ (however using node-sass) with a few changes:
 
 -   Omit the first step, since we are using the already available project structure with it's package.json
 -   As indicated install the packages for development, as we are only customizing bulma during development time
