@@ -12,7 +12,7 @@ You can use it right from the [website](https://tic.replayer.ch), without any in
 
 # Notes
 
-## Setp
+## Setup
 
 This PWA was created with the minimal guide from [How to create a new PWA-enabled VueJs app on Ubuntu 20.04 from scratch](https://qrys.ch/how-to-create-a-new-pwa-enabled-vuejs-app-on-ubuntu-20-04/), using the following options:
 
