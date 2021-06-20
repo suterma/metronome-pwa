@@ -22,7 +22,7 @@ This PWA was created with the minimal guide from [How to create a new PWA-enable
 - PWA
 - Router (no history mode)
 - Vuex
-- CSS Preprocessors (Sass/SCSS (with node-sass))
+- CSS Preprocessors (Sass/SCSS (with dart-sass))
 - Linter / Formatter (ESLint + Prettier, Lint on save)
 - dedicated config files
 
