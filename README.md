@@ -1,12 +1,12 @@
 # metronome-pwa
 
-A simple metronome, as progressive web app. Available at https://tic.replayer.ch
+A simple metronome, as progressive web app. Available at https://tic.replayer.app
 
 ![tic (metronome) main screen](/public/img/screenshot.png)
 
 # Installation
 
-You can [use it right from the website](https://tic.replayer.ch), without any installation.
+You can [use it right from the website](https://tic.replayer.app), without any installation.
 
 While visiting, you can then install it as a [Progressive web application](https://en.wikipedia.org/wiki/Progressive_web_application), for offline use within your browser:
 
