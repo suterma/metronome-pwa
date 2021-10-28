@@ -149,7 +149,6 @@ import { defineComponent } from 'vue'
 import Fader from '@/components/Fader.vue'
 import samples from './samples.json'
 import { decode } from 'base64-arraybuffer'
-import { setTimeout } from 'timers'
 
 /** A Wake Lock API polyfill, to avoid screen locks while running the metronome */
 import NoSleep from 'nosleep.js'
