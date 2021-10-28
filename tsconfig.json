@@ -1,8 +1,9 @@
 {
     "compilerOptions": {
-        "target": "esnext",
-        "module": "esnext",
+        "target": "es6",
+        "module": "commonjs",
         "strict": true,
+        "declaration": true,
         "jsx": "preserve",
         "importHelpers": true,
         "moduleResolution": "node",
@@ -12,8 +13,13 @@
         "esModuleInterop": true,
         "allowSyntheticDefaultImports": true,
         "sourceMap": true,
+        "noUnusedParameters": true,
+        "strictNullChecks": true,
+        "noEmitOnError": true,
+        "noImplicitAny": true,
+        "noUnusedLocals": true,
         "baseUrl": ".",
-        "types": ["webpack-env", "node"],
+        "types": ["webpack-env"],
         "paths": {
             "@/*": ["src/*"]
         },
